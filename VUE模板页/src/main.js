@@ -11,6 +11,26 @@ import 'element-ui/lib/theme-chalk/index.css'
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 
+router.beforeEach((to, from, next) => {
+  const flag = sessionStorage.getItem('isLogin');
+  if( to.path == "/login"  ){
+    next();
+  }else{
+    if ( to.meta.isLogin ){
+      if ( flag ){
+        next();
+      }else{
+        next({
+          path: "/login"
+        });
+      }
+    }else{
+      next({
+        path: "/login"
+      });
+    }
+  }
+});
 
 /* eslint-disable no-new */
 new Vue({
