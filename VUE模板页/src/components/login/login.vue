@@ -4,6 +4,7 @@
       <el-header><Nav/></el-header>
       <el-main>
          <div class="loginDiv">
+
            <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="0px" class="demo-ruleForm">
              <el-col :span="22" :offset="1">
                <el-form-item prop="account">
