@@ -6,7 +6,7 @@
 <script>
     //import someComponent from './someComponent'
     export default {
-        name: "Nav",
+        name: "Menu",
         data(){
             return {
                 msg: "Hello Vue.js"
