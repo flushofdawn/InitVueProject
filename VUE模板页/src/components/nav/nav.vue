@@ -15,4 +15,8 @@
     }
 </script>
 <style scoped>
+  .myHeader{
+    width: 100%;
+    background: #42b983;
+  }
 </style>

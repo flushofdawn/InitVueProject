@@ -1,12 +1,14 @@
 <template>
   <div>
-    <el-container>
+    <el-container  class="login">
       <el-header><Nav/></el-header>
       <el-main>
          <div class="loginDiv">
-
            <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="0px" class="demo-ruleForm">
              <el-col :span="22" :offset="1">
+               <div class="logoDiv">
+                  <img class="" src="@/public/images/logo_login.png" />
+               </div>
                <el-form-item prop="account">
                  <el-input v-model.number="ruleForm.account" placeholder="请输入账号" clearable></el-input>
                </el-form-item>
@@ -32,6 +34,7 @@
 
 <script>
   import Nav from '@/components/nav/nav';
+  import TheGardenBg from '@/public/images/TheGardenBg/414569.png';
   export default {
     name: 'Login',
     components: {
@@ -81,8 +84,8 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-
-
+            sessionStorage.setItem("isLogin", true );
+            window.location.hash="/index"
           } else {
             return false;
           }
@@ -98,6 +101,14 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" rel="stylesheet/scss" scoped>
   $backgroundColor: #000;
+  .login{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: url("../../public/images/TheGardenBg/508468.jpg") no-repeat;
+    background-size:100%;
+    background-position:100%;
+  }
   .el-header{
     background-color: $backgroundColor;
   }
@@ -106,12 +117,21 @@
   }
   .loginDiv{
     width: 480px;
-    border: 1px solid #666666;
     padding: 20px 0;
     position: absolute;
-    top: 45%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 16px 0 rgba(0,0,0,0.1);
+    border-radius: 4px;
+  }
+  .logoDiv{
+    text-align: center;
+    padding: 20px 0;
+    img{
+      width: 80%;
+    }
   }
   .loginBtn{
     width: 100%;

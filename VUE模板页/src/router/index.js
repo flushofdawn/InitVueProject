@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/login/login'
-import Nav from '@/components/nav/nav'
-import Menu from '@/components/menu/menu'
+import Index from '@/components/index/index'
 
 Vue.use(Router)
 
@@ -12,18 +11,10 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login,
-    },
-    {
-      path: '/nav',
-      name: 'nav',
-      component: Nav,
-      meta:{
-        isLogin : true,
-      }
     },{
-      path: '/menu',
-      name: 'menu',
-      component: Menu,
+      path: '/index',
+      name: 'index',
+      component: Index,
       meta:{
         isLogin : true,
       }
