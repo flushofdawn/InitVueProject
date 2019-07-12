@@ -1,0 +1,140 @@
+{
+  "status": "0",
+  "key2": "value2",
+  "list": [
+    {
+      "name": "第一章节",
+      "icon": "el-icon-phone",
+      "id":"1",
+      "index": "1",
+      "permission":false,
+      "childList":[]
+    }, {
+      "name": "第二章节",
+      "icon": "el-icon-s-goods",
+      "permission":true,
+      "index": "2",
+      "id":"2",
+      "childList":[{
+        "name": "第二章节-第一小节",
+        "icon": "el-icon-upload",
+        "permission":true,
+        "index": "2-1",
+        "id":"21",
+        "childList":[{
+          "name": "第二章节-第一小节-第一小节",
+          "icon": "el-icon-location",
+          "permission":false,
+          "index": "2-1-1",
+          "id":"21",
+          "childList":[]
+        },{
+          "name": "第二章节-第一小节-第二小节",
+          "icon": "el-icon-location",
+          "permission":false,
+          "index": "2-1-2",
+          "id":"22",
+          "childList":[]
+        }]
+      },{
+        "name": "第二章节-第二小节",
+        "icon": "el-icon-upload",
+        "index": "2-2",
+        "permission":true,
+        "id":"21",
+        "childList":[{
+          "name": "第二章节-第二小节-第一小节",
+          "icon": "el-icon-location",
+          "permission":false,
+          "index": "2-2-1",
+          "id":"21",
+          "childList":[]
+        },{
+          "name": "第二章节-第二小节-第二小节",
+          "icon": "el-icon-location",
+          "permission":false,
+          "index": "2-2-2",
+          "id":"22",
+          "childList":[]
+        }]
+      },{
+        "name": "第二章节-第三小节",
+        "icon": "el-icon-location",
+        "permission":false,
+        "index": "2-3",
+        "id":"22",
+        "childList":[]
+      }]
+    }, {
+      "name": "第三章节",
+      "icon": "el-icon-s-goods",
+      "permission":true,
+      "index": "3",
+      "id":"2",
+      "childList":[{
+        "name": "第三章节-第一小节",
+        "icon": "el-icon-upload",
+        "permission":true,
+        "index": "3-1",
+        "id":"21",
+        "childList":[{
+          "name": "第三章节-第一小节-第一小节",
+          "icon": "el-icon-location",
+          "permission":false,
+          "index": "3-1-1",
+          "id":"21",
+          "childList":[]
+        },{
+          "name": "第三章节-第一小节-第二小节",
+          "icon": "el-icon-location",
+          "permission":false,
+          "index": "3-1-2",
+          "id":"22",
+          "childList":[]
+        }]
+      },{
+        "name": "第三章节-第二小节",
+        "icon": "el-icon-upload",
+        "index": "3-2",
+        "permission":true,
+        "id":"21",
+        "childList":[{
+          "name": "第三章节-第二小节-第一小节",
+          "icon": "el-icon-location",
+          "permission":false,
+          "index": "3-2-1",
+          "id":"21",
+          "childList":[]
+        },{
+          "name": "第三章节-第二小节-第二小节",
+          "icon": "el-icon-location",
+          "permission":false,
+          "index": "3-2-2",
+          "id":"22",
+          "childList":[]
+        }]
+      },{
+        "name": "第三章节-第三小节",
+        "icon": "el-icon-location",
+        "permission":false,
+        "index": "3-3",
+        "id":"22",
+        "childList":[{
+          "name": "第三章节-第二小节-第二小节",
+          "icon": "el-icon-location",
+          "permission":false,
+          "index": "3-2-2",
+          "id":"22",
+          "childList":[]
+        },{
+          "name": "第三章节-第二小节-第二小节",
+          "icon": "el-icon-location",
+          "permission":false,
+          "index": "3-2-2",
+          "id":"22",
+          "childList":[]
+        }]
+      }]
+    }
+  ]
+}

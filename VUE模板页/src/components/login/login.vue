@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-container  class="login">
-      <el-header><Nav/></el-header>
+
       <el-main>
          <div class="loginDiv">
            <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="0px" class="demo-ruleForm">
@@ -33,12 +33,12 @@
 </template>
 
 <script>
-  import Nav from '@/components/nav/nav';
+  /*import Nav from '@/components/nav/nav';*/
   import TheGardenBg from '@/public/images/TheGardenBg/414569.png';
   export default {
     name: 'Login',
     components: {
-      Nav
+
     },
     data() {
       var checkAccount = (rule, value, callback) => {

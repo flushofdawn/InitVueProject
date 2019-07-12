@@ -2,7 +2,9 @@
   <el-container id="i">
     <el-header><Nav/></el-header>
     <el-container>
-      <el-aside class="leftAside">Aside</el-aside>
+      <el-aside class="leftAside">
+        <Menu />
+      </el-aside>
       <el-main>Main</el-main>
     </el-container>
   </el-container>
@@ -10,15 +12,15 @@
 
 <script>
   import Nav from '@/components/nav/nav';
+  import Menu from '@/components/menu/menu';
+
   export default {
     components: {
-      Nav
+      Nav,Menu
     },
-    data () {
-      return {
-        mas: 'Welcome to Your index'
-      }
-    },
+    /*data () {
+        return ''
+    },*/
   }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
