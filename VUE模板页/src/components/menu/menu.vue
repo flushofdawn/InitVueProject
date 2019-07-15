@@ -24,6 +24,7 @@
             </template>
             <template v-else="item2.permission">
               <el-menu-item index="index1+' - '+index2">{{ item2.name }}</el-menu-item>
+
             </template>
           </template>
         </el-submenu>
