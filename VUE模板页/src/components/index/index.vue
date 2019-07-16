@@ -2,8 +2,10 @@
   <el-container id="i">
     <el-header><Nav/></el-header>
     <el-container>
-      <el-aside class="leftAside">
-        <Menu />
+      <el-aside class="leftAside" ref="leftAside">
+        <el-scrollbar class="colSroll">
+          <Menu />
+        </el-scrollbar>
       </el-aside>
       <el-main>Main</el-main>
     </el-container>
@@ -13,7 +15,7 @@
 <script>
   import Nav from '@/components/nav/nav';
   import Menu from '@/components/menu/menu';
-
+  import '@/public/css/common.css'
   export default {
     components: {
       Nav,Menu
@@ -30,6 +32,11 @@
     height: 100%;
     .leftAside{
       width: 240px !important;
+      height: 100%;
+      overflow:hidden;
+      .el-scrollbar{
+        height: 100%;
+      }
     }
   }
 </style>

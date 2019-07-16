@@ -1,10 +1,9 @@
 <template>
     <div class="">
-      <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-        <el-radio-button :label="false">展开</el-radio-button>
-        <el-radio-button :label="true">收起</el-radio-button>
-      </el-radio-group>
       <!-- 一级菜单循环-->
+      <div class="" @click="menuClick">
+          <i class="el-icon-d-arrow-right"></i>
+      </div>
       <el-menu class="el-menu-vertical-demo" v-for="( item1 ,index1 ) in menuList" :key="index1" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
         <el-submenu :index='toSting(index1)' v-if="item1.permission">
           <template slot="title">
@@ -53,6 +52,16 @@
         this.getMenuList();
       },
       methods: {
+        menuClick(){
+          var leftAside = this.$emit('leftAside');
+          if( this.isCollapse ){
+            leftAside.style.cssText = "width:300px";
+            this.isCollapse = false
+          }else {
+            leftAside.style.cssText = "width:65px";
+            this.isCollapse = true
+          }
+        },
         handleOpen(key, keyPath) {
           console.log(key, keyPath);
         },
@@ -78,5 +87,10 @@
       }
   }
 </script>
-<style scoped>
+<style lang="scss" rel="stylesheet/scss" scoped>
+  .el-menu-item{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 </style>
