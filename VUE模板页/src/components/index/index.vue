@@ -34,6 +34,8 @@
     height: 100%;
     .leftAside{
       width: auto !important;
+      background-color: #FFF;
+      border-right: 1px solid #e6e6e6;
       height: 100%;
       overflow:hidden;
       .el-scrollbar{

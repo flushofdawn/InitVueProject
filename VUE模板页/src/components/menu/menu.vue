@@ -105,8 +105,10 @@
     line-height: 30px;
     text-align: center;
     border-top: 1px solid #e6e6e6;
-    border-right: 1px solid #e6e6e6;
     font-size: 18px;
     vertical-align: middle;
+  }
+  .el-menu{
+    border-right: none;
   }
 </style>
