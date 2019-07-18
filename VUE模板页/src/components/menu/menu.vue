@@ -91,6 +91,7 @@
   }
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>
+
   .el-menu-item{
     white-space: nowrap;
     overflow: hidden;
