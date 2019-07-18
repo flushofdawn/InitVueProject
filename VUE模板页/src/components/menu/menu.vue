@@ -1,10 +1,10 @@
 <template>
     <div class="">
       <!-- 一级菜单循环-->
-      <div class="" @click="menuClick">
+      <div class="menuBtn" @click="menuClick">
           <i class="el-icon-d-arrow-right"></i>
       </div>
-      <el-menu class="el-menu-vertical-demo" v-for="( item1 ,index1 ) in menuList" :key="index1" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+      <el-menu class="menuLen" v-for="( item1 ,index1 ) in menuList"  :router=true :default-active="defaultActive" :key="index1" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
         <el-submenu :index='toSting(index1)' v-if="item1.permission">
           <template slot="title">
             <i :class="[item1.icon]" ></i>
@@ -17,16 +17,16 @@
                 <span slot="title">{{ item2.name }}</span>
                 <!-- 三级菜单循环 -->
                 <div v-for="( item3 ,index3 ) in item2.childList" :key="index1+'-'+index2+'-'+index3">
-                  <el-menu-item :index="toSting(index1,index2,index3)">{{ item3.name }}</el-menu-item>
+                  <el-menu-item :index="item3.path">{{ item3.name }}</el-menu-item>
                 </div>
               </el-submenu>
             </div>
             <div v-else="item2.permission">
-              <el-menu-item :index="toSting(index1,index2)">{{ item2.name }}</el-menu-item>
+              <el-menu-item :index="item2.path">{{ item2.name }}</el-menu-item>
             </div>
           </div>
         </el-submenu>
-        <el-menu-item :index='toSting(index1)'  v-else="item1.permission">
+        <el-menu-item :index='item1.path'  v-else="item1.permission">
           <i :class="[item1.icon]"></i>
           <span slot="title">{{ item1.name }}</span>
         </el-menu-item>
@@ -48,17 +48,20 @@
             isCollapse: true
           }
       },
+      computed: {
+      //获取当前路由渲染页面菜单
+        defaultActive() {
+          return this.$route.path;
+        }
+      },
       mounted() {
         this.getMenuList();
       },
       methods: {
         menuClick(){
-          var leftAside = this.$emit('leftAside');
           if( this.isCollapse ){
-            leftAside.style.cssText = "width:300px";
             this.isCollapse = false
           }else {
-            leftAside.style.cssText = "width:65px";
             this.isCollapse = true
           }
         },
@@ -92,5 +95,18 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  .menuLen:not(.el-menu--collapse) {
+    width: 200px;
+  }
+  .menuBtn{
+    background-color: #FFF;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-top: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    font-size: 18px;
+    vertical-align: middle;
   }
 </style>

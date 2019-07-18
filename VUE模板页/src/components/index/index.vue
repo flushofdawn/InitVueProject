@@ -7,7 +7,9 @@
           <Menu />
         </el-scrollbar>
       </el-aside>
-      <el-main>Main</el-main>
+      <el-main>
+        <router-view/>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -31,7 +33,7 @@
     width: 100%;
     height: 100%;
     .leftAside{
-      width: 240px !important;
+      width: auto !important;
       height: 100%;
       overflow:hidden;
       .el-scrollbar{

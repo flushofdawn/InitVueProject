@@ -85,7 +85,7 @@
         this.$refs[formName].validate((valid) => {
           if (valid) {
             sessionStorage.setItem("isLogin", true );
-            window.location.hash="/index"
+            window.location.href="/index";
           } else {
             return false;
           }
