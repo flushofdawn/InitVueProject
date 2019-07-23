@@ -1,9 +1,6 @@
 <template>
     <div class="">
       <!-- 一级菜单循环-->
-      <div class="menuBtn" @click="menuClick">
-          <i class="el-icon-d-arrow-right"></i>
-      </div>
       <el-menu class="menuLen" v-for="( item1 ,index1 ) in menuList"  :router=true :default-active="defaultActive" :key="index1" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
         <el-submenu :index='toSting(index1)' v-if="item1.permission">
           <template slot="title">
@@ -31,6 +28,9 @@
           <span slot="title">{{ item1.name }}</span>
         </el-menu-item>
       </el-menu>
+      <div class="menuBtn" @click="menuClick">
+        <i :class="shrinkIcon" ></i>
+      </div>
     </div>
 </template>
 
@@ -45,7 +45,8 @@
       data(){
           return {
             menuList:'',
-            isCollapse: true
+            isCollapse: true,
+            shrinkIcon:'fa fa-angle-double-right'
           }
       },
       computed: {
@@ -61,8 +62,10 @@
         menuClick(){
           if( this.isCollapse ){
             this.isCollapse = false
+            this.shrinkIcon = "fa fa-angle-double-left"
           }else {
             this.isCollapse = true
+            this.shrinkIcon = "fa fa-angle-double-right"
           }
         },
         handleOpen(key, keyPath) {
@@ -91,7 +94,15 @@
   }
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>
-
+  /deep/ .el-submenu__title,.el-menu-item{
+    border-bottom: 1px solid #e5e5e5;
+    padding: 1px;
+    height: 45px;
+    line-height: 40px;
+  }
+  .el-menu{
+    padding: 0 !important;
+  }
   .el-menu-item{
     white-space: nowrap;
     overflow: hidden;
@@ -105,9 +116,32 @@
     height: 30px;
     line-height: 30px;
     text-align: center;
-    border-top: 1px solid #e6e6e6;
     font-size: 18px;
     vertical-align: middle;
+    position: relative;
+    i{
+      font-size: 13px;
+      padding:0 4px;
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      border: 1px solid #bbb;
+      border-radius: 50%;
+      color: #aaa;
+      vertical-align: baseline;
+      background-color: #FFFFFF;
+      z-index: 10;
+    }
+  }
+  .menuBtn:before{
+    content: "";
+    display: inline-block;
+    height: 0;
+    border-top: 1px solid #e0e0e0;
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    top: 16px;
   }
   .el-menu{
     border-right: none;

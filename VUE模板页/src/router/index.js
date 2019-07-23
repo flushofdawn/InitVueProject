@@ -19,7 +19,7 @@ export default new Router({
       name: 'login',
       component: Login,
     },{
-      path: '/index',
+      path: '/',
       name: 'index',
       component: Index,
       meta:{
@@ -27,7 +27,7 @@ export default new Router({
       },
       children:[
         {
-          path: '/index/main1',
+          path: '/main1',
           name: 'main1',
           component: Main1,
           meta:{
@@ -35,7 +35,7 @@ export default new Router({
           }
         },
         {
-          path: '/index/main2_1_1',
+          path: '/main2_1_1',
           name: 'Main2_1_1',
           component: Main2_1_1,
           meta:{
@@ -43,7 +43,7 @@ export default new Router({
           }
         },
         {
-          path: '/index/main2_1_2',
+          path: '/main2_1_2',
           name: 'Main2_1_2',
           component: Main2_1_2,
           meta:{
@@ -51,7 +51,7 @@ export default new Router({
           }
         },
         {
-          path: '/index/main2_2_1',
+          path: '/main2_2_1',
           name: 'Main2_2_1',
           component: Main2_2_1,
           meta:{
@@ -59,7 +59,7 @@ export default new Router({
           }
         },
         {
-          path: '/index/main2_3',
+          path: '/main2_3',
           name: 'Main2_3',
           component: Main2_3,
           meta:{

@@ -6,6 +6,7 @@ import router from './router'
 import './public/css/common.css'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import 'font-awesome/scss/font-awesome.scss'
 
 import axios from 'axios'
 import qs from 'qs'
@@ -17,7 +18,6 @@ Vue.prototype.$axios = axios    //全局注册，使用方法为:this.$axios
 Vue.prototype.qs = qs           //全局注册，使用方法为:this.qs
 
 router.beforeEach((to, from, next) => {
-  console.log( 1 );
   const flag = sessionStorage.getItem('isLogin');
   if( to.path == "/login"  ){
     next();

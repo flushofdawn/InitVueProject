@@ -29,6 +29,10 @@
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" rel="stylesheet/scss" scoped>
+  .el-header{
+    background-color: #292961;
+    height: 54px !important;
+  }
   .el-container{
     width: 100%;
     height: 100%;

@@ -1,6 +1,9 @@
 <template>
-    <div class="myHeader">{{msg}}</div>
-    <!--<someComponent></someComponent>-->
+    <div class="myHeader">
+      <div class="logoDiv">
+        <img src="../../public/images/nav/logo.png">
+      </div>
+    </div>
 </template>
 
 <script>
@@ -14,9 +17,15 @@
         },
     }
 </script>
-<style scoped>
+<style  lang="scss" rel="stylesheet/scss" scoped>
   .myHeader{
     width: 100%;
-    background: #42b983;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .logoDiv img{
+      margin-top: 2px;
+      height: 50px;
+    }
   }
 </style>
