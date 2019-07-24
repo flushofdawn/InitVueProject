@@ -1,7 +1,7 @@
 <template>
     <div class="">
       <!-- 一级菜单循环-->
-      <el-menu class="menuLen" v-for="( item1 ,index1 ) in menuList"  :router=true :default-active="defaultActive" :key="index1" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+      <el-menu class="menuLen" v-for="( item1 ,index1 ) in menuList" :unique-opened=true  :router=true :default-active="defaultActive" :key="index1" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
         <el-submenu :index='toSting(index1)' v-if="item1.permission">
           <template slot="title">
             <i :class="[item1.icon]" ></i>
@@ -99,9 +99,12 @@
     padding: 1px;
     height: 45px;
     line-height: 40px;
+    border-left: 3px solid #f9f9f9;
+    padding-left: 10px !important;
   }
-  .el-menu{
+  /deep/ .el-menu{
     padding: 0 !important;
+    background-color: #f9f9f9;
   }
   .el-menu-item{
     white-space: nowrap;
@@ -111,22 +114,34 @@
   .menuLen:not(.el-menu--collapse) {
     width: 200px;
   }
+  .el-menu--collapse{
+    width: 48px;
+  }
+  /deep/ .el-submenu__title:hover,.el-menu-item:hover{
+    border-left: 3px solid #3382af;
+  }
+  .el-menu-item:focus, .el-menu-item:hover{
+    background-color: #FFFFFF;
+    border-left: 3px solid #3382af;
+  }
+  /deep/ .el-tooltip{
+    padding: 0 !important;
+    padding-left: 10px !important;;
+  }
   .menuBtn{
-    background-color: #FFF;
-    height: 30px;
-    line-height: 30px;
+    line-height: 24px;
+    height: 26px;
     text-align: center;
     font-size: 18px;
-    vertical-align: middle;
     position: relative;
     i{
-      font-size: 13px;
+      font-size: 14px;
       padding:0 4px;
       display: inline-block;
       position: relative;
       cursor: pointer;
       border: 1px solid #bbb;
-      border-radius: 50%;
+      border-radius: 45%;
       color: #aaa;
       vertical-align: baseline;
       background-color: #FFFFFF;
@@ -139,11 +154,17 @@
     height: 0;
     border-top: 1px solid #e0e0e0;
     position: absolute;
-    left: 15px;
-    right: 15px;
-    top: 16px;
+    left: 8px;
+    right: 8px;
+    top: 14px;
   }
   .el-menu{
     border-right: none;
+  }
+  .el-menu-item i{
+    margin: 0;
+    vertical-align: middle;
+    width: 24px;
+    text-align: center;
   }
 </style>

@@ -27,3 +27,6 @@ table{ border-collapse: collapse; border-spacing: 0; }
 .colSroll .el-scrollbar__wrap{
   overflow-x:hidden !important;
 }
+.el-menu--popup{
+  padding: 0 !important;
+}

@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Login from '@/components/login/login'
 import Index from '@/components/index/index'
 
-import Main1 from '@/components/main/main1';
+import Dashboard from '@/components/main/dashboard';
 import Main2_1_1 from '@/components/main/main2_1_1';
 import Main2_1_2 from '@/components/main/main2_1_2';
 import Main2_2_1 from '@/components/main/Main2_2_1';
@@ -27,9 +27,9 @@ export default new Router({
       },
       children:[
         {
-          path: '/main1',
-          name: 'main1',
-          component: Main1,
+          path: '/dashboard',
+          name: 'dashboard',
+          component: Dashboard,
           meta:{
             isLogin : true,
           }

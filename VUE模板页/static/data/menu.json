@@ -3,9 +3,9 @@
   "key2": "value2",
   "list": [
     {
-      "name": "第一章节",
-      "path":"main1",
-      "icon": "el-icon-phone",
+      "name": "dashboard",
+      "path":"dashboard",
+      "icon": "fa fa-dashboard",
       "id":"1",
       "permission":false,
       "childList":[]

@@ -38,7 +38,7 @@
     height: 100%;
     .leftAside{
       width: auto !important;
-      background-color: #FFF;
+      background-color: #f2f2f2;
       border-right: 1px solid #e6e6e6;
       height: 100%;
       overflow:hidden;
