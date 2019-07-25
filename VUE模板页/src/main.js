@@ -7,12 +7,15 @@ import './public/css/common.css'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'font-awesome/scss/font-awesome.scss'
-
+import Echarts from 'echarts'
 import axios from 'axios'
 import qs from 'qs'
 
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
+
+Vue.prototype.echarts = Echarts;
+Vue.use(Echarts);
 
 Vue.prototype.$axios = axios    //全局注册，使用方法为:this.$axios
 Vue.prototype.qs = qs           //全局注册，使用方法为:this.qs

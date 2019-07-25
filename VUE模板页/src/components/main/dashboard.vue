@@ -1,22 +1,32 @@
 <template>
   <div class=" ">
+    <el-row :gutter="24">
+      <el-col :span="6">
+        <div class="grid-content bg-purple">
+          <div>
+            <i class=""></i>
+          </div>
+          <div>
+            <p>干员</p>
+            <p>{{ members }}</p>
+          </div>
+        </div>
+      </el-col>
+      <el-col :span="6">
+        <div class="grid-content bg-purple"></div>
+      </el-col>
+      <el-col :span="6">
+        <div class="grid-content bg-purple"></div>
+      </el-col>
+      <el-col :span="6">
+        <div class="grid-content bg-purple"></div>
+      </el-col>
+    </el-row>
     <el-row :gutter="24" >
       <el-col :span="24">
         <div class="grid-content bg-purple">
 
         </div>
-      </el-col>
-    </el-row>
-
-    <el-row :gutter="24">
-      <el-col :span="8">
-        <div class="grid-content bg-purple"></div>
-      </el-col>
-      <el-col :span="8">
-        <div class="grid-content bg-purple"></div>
-      </el-col>
-      <el-col :span="8">
-        <div class="grid-content bg-purple"></div>
       </el-col>
     </el-row>
   </div>
@@ -28,11 +38,22 @@ export default {
   name: 'Dashboard',
   data () {
     return {
-      msg: 'Welcome to Your dashboard'
+      "members": 87,
+      "money": 131571,
+      "stone": 37,
+      "energy": 103
     }
   },
+  mounted() {
+    this.getData();
+  },
   methods: {
+    getData:function(){
+      var This=this;
+      axios.get("../static/data/dashBoard.json", {}).then(function (response) {
 
+      })
+    },
   }
 }
 </script>

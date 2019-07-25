@@ -67,9 +67,9 @@
           .photoDiv{
             position: absolute;
             left: 0;
-            top: 4px;
-            height: 46px;
-            width: 46px;
+            top: 5px;
+            height: 44px;
+            width: 44px;
             border-radius: 50%;
             overflow: hidden;
             img{
