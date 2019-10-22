@@ -76,8 +76,10 @@
         },
         getMenuList:function(){
           var This=this;
-          axios.get("../static/data/menu.json", {}).then(function (response) {
+          axios.get("/static/data/menu.json", {}).then(function (response) {
+
             This.menuList = response.data.list;
+            console.log(  This.menuList )
           })
         },
         toSting:function(...arg){
@@ -119,6 +121,9 @@
   }
   /deep/ .el-submenu__title:hover,.el-menu-item:hover{
     border-left: 3px solid #3382af;
+  }
+  /deep/.el-submenu.is-active .el-submenu__title{
+    border-bottom-color: #e6e6e6;
   }
   .el-menu-item:focus, .el-menu-item:hover{
     background-color: #FFFFFF;

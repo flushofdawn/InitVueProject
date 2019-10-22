@@ -9,7 +9,7 @@ export default {
   name: 'Main2_1_2',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App222222222222'
+      msg: 'Welcome to Your Vue.js App 2——1——2'
     }
   },
   methods: {

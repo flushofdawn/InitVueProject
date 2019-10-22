@@ -4,56 +4,56 @@
   "list": [
     {
       "name": "dashboard",
-      "path":"dashboard",
+      "path":"/dashboard",
       "icon": "fa fa-dashboard",
       "id":"1",
       "permission":false,
       "childList":[]
     }, {
-      "name": "第二章节",
+      "name": "路由嵌套",
       "path":"index/main2",
       "icon": "el-icon-s-goods",
       "permission":true,
       "id":"2",
       "childList":[{
-        "name": "第二章节-第一小节",
+        "name": "菜单1",
         "icon": "el-icon-upload",
         "permission":true,
         "path":"main2_1",
         "id":"21",
         "childList":[{
-          "name": "第二章节-第一小节-第一小节",
+          "name": "菜单1-1",
           "icon": "el-icon-location",
-          "path":"main2_1_1",
+          "path":"/main2/main2_1/main2_1_1",
           "permission":false,
           "id":"21",
           "childList":[]
         },{
-          "name": "第二章节-第一小节-第二小节",
+          "name": "菜单1-2",
           "icon": "el-icon-location",
-          "path":"main2_1_2",
+          "path":"/main2/main2_1/main2_1_2",
           "permission":false,
           "id":"22",
           "childList":[]
         }]
       },{
-        "name": "第二章节-第二小节",
+        "name": "菜单2",
         "icon": "el-icon-upload",
-        "path":"main2_2",
+        "path":"/main2/main2_2",
         "permission":true,
         "id":"21",
         "childList":[{
-          "name": "第二章节-第二小节-第一小节",
-          "path":"main2_2_1",
+          "name": "菜单2-1",
+          "path":"/main2/main2_2/main2_2_1",
           "icon": "el-icon-location",
           "permission":false,
           "id":"21",
           "childList":[]
         }]
       },{
-        "name": "第二章节-第三小节",
+        "name": "菜单3",
         "icon": "el-icon-location",
-        "path":"main2_3",
+        "path":"/main2/main2_3",
         "permission":false,
         "id":"22",
         "childList":[]

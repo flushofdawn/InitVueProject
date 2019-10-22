@@ -1,6 +1,6 @@
 <template>
   <el-container id="i">
-    <el-header><Nav/></el-header>
+    <el-header><Head/></el-header>
     <el-container>
       <el-aside class="leftAside" ref="leftAside">
         <el-scrollbar class="colSroll">
@@ -8,19 +8,21 @@
         </el-scrollbar>
       </el-aside>
       <el-main>
-        <router-view/>
+        <Nav />
+        <router-view />
       </el-main>
     </el-container>
   </el-container>
 </template>
 
 <script>
+  import Head from '@/components/head/head';
   import Nav from '@/components/nav/nav';
   import Menu from '@/components/menu/menu';
   import '@/public/css/common.css'
   export default {
     components: {
-      Nav,Menu
+      Nav,Menu,Head
     },
     /*data () {
         return ''
@@ -45,6 +47,10 @@
       .el-scrollbar{
         height: 100%;
       }
+    }
+    .el-main{
+      overflow-x: hidden;
+      padding: 0;
     }
   }
 </style>

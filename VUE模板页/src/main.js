@@ -21,24 +21,35 @@ Vue.prototype.$axios = axios    //全局注册，使用方法为:this.$axios
 Vue.prototype.qs = qs           //全局注册，使用方法为:this.qs
 
 router.beforeEach((to, from, next) => {
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
   const flag = sessionStorage.getItem('isLogin');
   if( to.path == "/login"  ){
     next();
   }else{
+    var address = to.fullPath;
+    var trueAddress = to.matched[1].path;
+
     if ( to.meta.isLogin ){
       if ( flag ){
-        next();
+        if( address == trueAddress ){
+          next();
+        }else {
+          next( trueAddress );
+        }
       }else{
-        next({
-          path: "/login"
-        });
+        next('/login');
       }
     }else{
-      next();
+      if( address == trueAddress ){
+        next();
+      }else {
+        next( trueAddress );
+      }
     }
   }
 });
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
