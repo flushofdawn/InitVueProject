@@ -1,46 +1,23 @@
 <template>
     <div class="">
-      <!-- 一级菜单循环-->
-      <el-menu class="menuLen" v-for="( item1 ,index1 ) in menuList" :unique-opened=true  :router=true :default-active="defaultActive" :key="index1" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-        <el-submenu :index='toSting(index1)' v-if="item1.permission">
-          <template slot="title">
-            <i :class="[item1.icon]" ></i>
-            <span slot="title">{{ item1.name }}</span>
-          </template>
-          <!-- 二级菜单循环 -->
-          <div  v-for="( item2 ,index2 ) in item1.childList" :key="index1+'-'+index2" >
-            <div v-if="item2.permission">
-              <el-submenu :index="toSting(index1,index2)">
-                <span slot="title">{{ item2.name }}</span>
-                <!-- 三级菜单循环 -->
-                <div v-for="( item3 ,index3 ) in item2.childList" :key="index1+'-'+index2+'-'+index3">
-                  <el-menu-item :index="item3.path">{{ item3.name }}</el-menu-item>
-                </div>
-              </el-submenu>
-            </div>
-            <div v-else="item2.permission">
-              <el-menu-item :index="item2.path">{{ item2.name }}</el-menu-item>
-            </div>
-          </div>
-        </el-submenu>
-        <el-menu-item :index='item1.path'  v-else="item1.permission">
-          <i :class="[item1.icon]"></i>
-          <span slot="title">{{ item1.name }}</span>
-        </el-menu-item>
-      </el-menu>
-      <div class="menuBtn" @click="menuClick">
-        <i :class="shrinkIcon" ></i>
-      </div>
+      <el-scrollbar>
+        <el-menu class="menuLen" :unique-opened=true  :router=true   :default-active="defaultActive"   @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+          <Menulist v-bind:menuList="menuList" ></Menulist>
+        </el-menu>
+        <div class="menuBtn" @click="menuClick">
+          <i :class="shrinkIcon" ></i>
+        </div>
+      </el-scrollbar>
     </div>
 </template>
 
 <script type="text/ecmascript-6" >
-
+  import Menulist from '@/components/menu/menuList';
   import axios from 'axios';
   export default {
       name: "Menu",
       components: {
-
+        Menulist
       },
       data(){
           return {
@@ -96,42 +73,15 @@
   }
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>
-  /deep/ .el-submenu__title,.el-menu-item{
-    border-bottom: 1px solid #e5e5e5;
-    padding: 1px;
-    height: 45px;
-    line-height: 40px;
-    border-left: 3px solid #f9f9f9;
-    padding-left: 10px !important;
-  }
   /deep/ .el-menu{
     padding: 0 !important;
     background-color: #f9f9f9;
-  }
-  .el-menu-item{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
   .menuLen:not(.el-menu--collapse) {
     width: 200px;
   }
   .el-menu--collapse{
     width: 48px;
-  }
-  /deep/ .el-submenu__title:hover,.el-menu-item:hover{
-    border-left: 3px solid #3382af;
-  }
-  /deep/.el-submenu.is-active .el-submenu__title{
-    border-bottom-color: #e6e6e6;
-  }
-  .el-menu-item:focus, .el-menu-item:hover{
-    background-color: #FFFFFF;
-    border-left: 3px solid #3382af;
-  }
-  /deep/ .el-tooltip{
-    padding: 0 !important;
-    padding-left: 10px !important;;
   }
   .menuBtn{
     line-height: 24px;
@@ -165,11 +115,5 @@
   }
   .el-menu{
     border-right: none;
-  }
-  .el-menu-item i{
-    margin: 0;
-    vertical-align: middle;
-    width: 24px;
-    text-align: center;
   }
 </style>

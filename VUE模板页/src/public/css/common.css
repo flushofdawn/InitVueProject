@@ -30,3 +30,10 @@ table{ border-collapse: collapse; border-spacing: 0; }
 .el-menu--popup{
   padding: 0 !important;
 }
+.el-menu--collapse .el-icon-arrow-right{
+  display: none !important;
+}
+.el-menu--collapse .el-submenu__title{
+  padding: 0 !important;
+  padding-left: 10px !important;
+}

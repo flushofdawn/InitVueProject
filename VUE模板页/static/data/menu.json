@@ -7,8 +7,7 @@
       "path":"/dashboard",
       "icon": "fa fa-dashboard",
       "id":"1",
-      "permission":false,
-      "childList":[]
+      "permission":false
     }, {
       "name": "路由嵌套",
       "path":"index/main2",
@@ -20,43 +19,39 @@
         "icon": "el-icon-upload",
         "permission":true,
         "path":"main2_1",
-        "id":"21",
+        "id":"3",
         "childList":[{
           "name": "菜单1-1",
           "icon": "el-icon-location",
           "path":"/main2/main2_1/main2_1_1",
           "permission":false,
-          "id":"21",
-          "childList":[]
+          "id":"6"
         },{
           "name": "菜单1-2",
           "icon": "el-icon-location",
           "path":"/main2/main2_1/main2_1_2",
           "permission":false,
-          "id":"22",
-          "childList":[]
+          "id":"7"
         }]
       },{
         "name": "菜单2",
         "icon": "el-icon-upload",
         "path":"/main2/main2_2",
         "permission":true,
-        "id":"21",
+        "id":"4",
         "childList":[{
           "name": "菜单2-1",
           "path":"/main2/main2_2/main2_2_1",
           "icon": "el-icon-location",
           "permission":false,
-          "id":"21",
-          "childList":[]
+          "id":"8"
         }]
       },{
         "name": "菜单3",
         "icon": "el-icon-location",
         "path":"/main2/main2_3",
         "permission":false,
-        "id":"22",
-        "childList":[]
+        "id":"5"
       }]
     }
   ]
