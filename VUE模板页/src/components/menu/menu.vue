@@ -7,6 +7,7 @@
         <div class="menuBtn" @click="menuClick">
           <i :class="shrinkIcon" ></i>
         </div>
+
       </el-scrollbar>
     </div>
 </template>
