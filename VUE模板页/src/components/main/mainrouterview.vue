@@ -6,12 +6,14 @@
 
 <script>
   export default {
-    name: 'routerView',
+    name: 'Routerviewmodal',
     data () {
       return { }
     },
     methods: {
-
+      key(){
+        return this.$route.path
+      }
     }
   }
 </script>

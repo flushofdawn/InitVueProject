@@ -1,15 +1,12 @@
 <template>
-    <div class="">
-      <el-scrollbar>
-        <el-menu class="menuLen" :unique-opened=true  :router=true   :default-active="defaultActive"   @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-          <Menulist v-bind:menuList="menuList" ></Menulist>
-        </el-menu>
-        <div class="menuBtn" @click="menuClick">
-          <i :class="shrinkIcon" ></i>
-        </div>
-
-      </el-scrollbar>
+  <div class="">
+    <el-menu class="menuLen" :unique-opened=true  :router=true   :default-active="defaultActive"   @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+      <Menulist v-bind:menuList="menuList" ></Menulist>
+    </el-menu>
+    <div class="menuBtn" @click="menuClick">
+      <i :class="shrinkIcon" ></i>
     </div>
+  </div>
 </template>
 
 <script type="text/ecmascript-6" >
@@ -55,9 +52,7 @@
         getMenuList:function(){
           var This=this;
           axios.get("/static/data/menu.json", {}).then(function (response) {
-
             This.menuList = response.data.list;
-            console.log(  This.menuList )
           })
         },
         toSting:function(...arg){

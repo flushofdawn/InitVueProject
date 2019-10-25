@@ -9,7 +9,7 @@
       </el-aside>
       <el-main>
         <Nav />
-        <router-view />
+        <router-view></router-view>
       </el-main>
     </el-container>
   </el-container>
@@ -19,10 +19,12 @@
   import Head from '@/components/head/head';
   import Nav from '@/components/nav/nav';
   import Menu from '@/components/menu/menu';
+  import Mainrouterview from '@/components/main/mainrouterview';
+
   import '@/public/css/common.css'
   export default {
     components: {
-      Nav,Menu,Head
+      Nav,Menu,Head,Mainrouterview
     },
     /*data () {
         return ''

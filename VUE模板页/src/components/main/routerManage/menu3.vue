@@ -6,10 +6,10 @@
 
 <script>
 export default {
-  name: 'Main2_2_1',
+  name: 'Menu3',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App 2——2——1'
+      msg: 'Menu3'
     }
   },
   methods: {

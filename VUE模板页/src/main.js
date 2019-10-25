@@ -28,25 +28,14 @@ router.beforeEach((to, from, next) => {
   if( to.path == "/login"  ){
     next();
   }else{
-    var address = to.fullPath;
-    var trueAddress = to.matched[1].path;
-
     if ( to.meta.isLogin ){
       if ( flag ){
-        if( address == trueAddress ){
-          next();
-        }else {
-          next( trueAddress );
-        }
+        next();
       }else{
         next('/login');
       }
     }else{
-      if( address == trueAddress ){
-        next();
-      }else {
-        next( trueAddress );
-      }
+      next();
     }
   }
 });

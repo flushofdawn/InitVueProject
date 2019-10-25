@@ -14,31 +14,6 @@
       </el-menu-item>
     </template>
   </div>
-  <!--<el-submenu :index='toSting(index1)' v-if="item1.permission">
-    <template slot="title">
-      <i :class="[item1.icon]" ></i>
-      <span slot="title">{{ item1.name }}</span>
-    </template>
-    &lt;!&ndash; 二级菜单循环 &ndash;&gt;
-    <div  v-for="( item2 ,index2 ) in item1.childList" :key="index1+'-'+index2" >
-      <div v-if="item2.permission">
-        <el-submenu :index="toSting(index1,index2)">
-          <span slot="title">{{ item2.name }}</span>
-          &lt;!&ndash; 三级菜单循环 &ndash;&gt;
-          <div v-for="( item3 ,index3 ) in item2.childList" :key="index1+'-'+index2+'-'+index3">
-            <el-menu-item :index="item3.path">{{ item3.name }}</el-menu-item>
-          </div>
-        </el-submenu>
-      </div>
-      <div v-else="item2.permission">
-        <el-menu-item :index="item2.path">{{ item2.name }}</el-menu-item>
-      </div>
-    </div>
-  </el-submenu>
-  <el-menu-item :index='item1.path'  v-else="item1.permission">
-    <i :class="[item1.icon]"></i>
-    <span slot="title">{{ item1.name }}</span>
-</el-menu-item>-->
 </template>
 
 <script type="text/ecmascript-6" >
