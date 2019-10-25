@@ -1,12 +1,12 @@
 <template>
-  <el-container id="i">
-    <el-header><Head/></el-header>
+  <el-container>
+    <el-aside class="leftAside" ref="leftAside">
+      <el-scrollbar class="colSroll">
+        <Menu />
+      </el-scrollbar>
+    </el-aside>
     <el-container>
-      <el-aside class="leftAside" ref="leftAside">
-        <el-scrollbar class="colSroll">
-          <Menu />
-        </el-scrollbar>
-      </el-aside>
+      <el-header><Head/></el-header>
       <el-main>
         <Nav />
         <router-view></router-view>
@@ -16,10 +16,10 @@
 </template>
 
 <script>
-  import Head from '@/components/head/head';
-  import Nav from '@/components/nav/nav';
-  import Menu from '@/components/menu/menu';
-  import Mainrouterview from '@/components/main/mainrouterview';
+  import Head from '@/components/index/head/head';
+  import Nav from '@/components/index/nav/nav';
+  import Menu from '@/components/index/menu/menu';
+  import Mainrouterview from '@/components/index/mainrouterview';
 
   import '@/public/css/common.css'
   export default {
@@ -53,6 +53,7 @@
     .el-main{
       overflow-x: hidden;
       padding: 0;
+      background: #FFFFFF;
     }
   }
 </style>

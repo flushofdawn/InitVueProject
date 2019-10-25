@@ -28,9 +28,6 @@
         methods: {
           getBreadcrumb (){
             var matched = this.$route.matched.filter(item => item.name);
-            matched.map(function (item,index) {
-              console.log( item );
-            })
 
             var first = matched[0];
             if (first && first.name.trim().toLocaleLowerCase() == 'index'.toLocaleLowerCase()) {

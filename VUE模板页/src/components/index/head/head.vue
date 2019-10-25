@@ -1,13 +1,13 @@
 <template>
     <div class="myHeader">
       <div class="logoDiv">
-        <img src="../../public/images/nav/logo.png">
+        <img src="../../../public/images/nav/logo.png">
       </div>
       <div class="userDiv">
         <el-dropdown trigger="click">
           <span class="el-dropdown-link">
             <div class="photoDiv">
-              <img src="../../public/images/photo/cc.png" />
+              <img src="../../../public/images/photo/cc.png" />
             </div>
             <div class="nameDiv">
                c.c. 魔女<i class="el-icon-caret-bottom el-icon--right"></i>

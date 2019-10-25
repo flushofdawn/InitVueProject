@@ -1,21 +1,7 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Login from '@/components/login/login'
-import Index from '@/components/index/index'
+import Vue from 'vue';
+import Router from 'vue-router';
 
-//Dashboard
-import Dashboard from '@/components/main/dashboard/dashboard';
-
-//路由嵌套-菜单页面
-import Menu1_1 from '@/components/main/routerManage/menu1_1';
-import Menu1_2 from '@/components/main/routerManage/menu1_2';
-import Menu2_1 from '@/components/main/routerManage/menu2_1';
-import Menu3 from '@/components/main/routerManage/menu3';
-
-//空 Routerview 组件页
-import Routerviewmodal from '@/components/main/mainrouterview';
-
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   mode: 'history',
@@ -24,7 +10,7 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: Login,
+      component: () => import("@/components/login/login"),
       meta:{
         title: '登陆',
       },
@@ -32,7 +18,7 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: Index,
+      component: () => import("@/components/index/index"),
       redirect:'/dashboard',
       meta:{
         isLogin : true,
@@ -42,7 +28,7 @@ export default new Router({
         {
           path: 'dashboard',
           name: 'dashboard',
-          component: Dashboard,
+          component: () => import("@/components/main/dashboard/dashboard"),
           meta:{
             isLogin : true,
             title: 'Dashboard',
@@ -50,7 +36,7 @@ export default new Router({
         },{
           path: 'routerManage',
           name: 'routerManage',
-          component: Routerviewmodal,
+          component: () => import("@/components/index/mainrouterview"),
           redirect:'/routerManage/menu3',
           meta:{
             isLogin : true,
@@ -60,7 +46,7 @@ export default new Router({
             {
               path: 'menu1',
               name: 'menu1',
-              component: Routerviewmodal,
+              component: () => import("@/components/index/mainrouterview"),
               redirect : '/routerManage/menu1/menu1_1',
               meta:{
                 isLogin : true,
@@ -70,7 +56,7 @@ export default new Router({
                 {
                   path: 'menu1_1',
                   name: 'menu1_1',
-                  component: Menu1_1,
+                  component:() => import("@/components/main/routerManage/menu1_1"),
                   meta:{
                     isLogin : true,
                     title: '菜单1-1',
@@ -78,7 +64,7 @@ export default new Router({
                 },{
                   path: 'menu1_2',
                   name: 'menu1_2',
-                  component: Menu1_2,
+                  component: () => import("@/components/main/routerManage/menu1_2"),
                   meta:{
                     isLogin : true,
                     title: '菜单1-2',
@@ -88,7 +74,7 @@ export default new Router({
             }, {
               path: 'menu2',
               name: 'menu2',
-              component: Routerviewmodal,
+              component: () => import("@/components/index/mainrouterview"),
               redirect: '/routerManage/menu2/menu2_1',
               meta:{
                 isLogin : true,
@@ -98,7 +84,7 @@ export default new Router({
                 {
                   path: 'menu2_1',
                   name: 'menu2_1',
-                  component: Menu2_1,
+                  component: () => import("@/components/main/routerManage/menu2_1"),
                   meta:{
                     isLogin : true,
                     title: '菜单2_1',
@@ -108,7 +94,7 @@ export default new Router({
             },{
               path: 'menu3',
               name: 'menu3',
-              component: Menu3,
+              component: () => import("@/components/main/routerManage/menu3"),
               meta:{
                 isLogin : true,
                 title: '菜单3',

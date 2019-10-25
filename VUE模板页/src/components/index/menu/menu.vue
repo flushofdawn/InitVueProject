@@ -1,6 +1,10 @@
 <template>
   <div class="">
+
     <el-menu class="menuLen" :unique-opened=true  :router=true   :default-active="defaultActive"   @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+      <div class="logo">
+        长歌行
+      </div>
       <Menulist v-bind:menuList="menuList" ></Menulist>
     </el-menu>
     <div class="menuBtn" @click="menuClick">
@@ -10,7 +14,7 @@
 </template>
 
 <script type="text/ecmascript-6" >
-  import Menulist from '@/components/menu/menuList';
+  import Menulist from '@/components/index/menu/menuList';
   import axios from 'axios';
   export default {
       name: "Menu",
@@ -72,6 +76,17 @@
   /deep/ .el-menu{
     padding: 0 !important;
     background-color: #f9f9f9;
+  }
+  .logo{
+    height: 50px;
+    padding: 1px;
+    line-height: 55px;
+    letter-spacing: 2px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    font-family: 华文行楷;
+    border-bottom: 1px solid #e5e5e5;
   }
   .menuLen:not(.el-menu--collapse) {
     width: 200px;
