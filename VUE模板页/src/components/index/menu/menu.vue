@@ -123,12 +123,15 @@
     flex: 1;
   }
   .logo{
+    width: 210px;
     height: 77px;
     position: relative;
     padding-left: 70px;
     font-size: 28px;
     line-height: 77px;
     font-family: 'Muli', sans-serif;
+    transition: 0.6s all;
+    white-space: nowrap;
     i{
       width: 50px;
       height: 50px;
@@ -140,6 +143,7 @@
     }
   }
   .noFont{
+    width: 0;
     span{
       display: none;
     }
