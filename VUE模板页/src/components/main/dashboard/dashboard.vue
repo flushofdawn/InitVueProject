@@ -1,5 +1,5 @@
 <template>
-  <div class=" ">
+  <div class="dashBody">
     <el-row :gutter="24">
       <el-col :span="12">
         <div class="grid-content divStyle">
@@ -52,6 +52,9 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .dashBody{
+    padding: 10px;
+  }
   .el-row{
     margin-bottom: 13px;
     margin-left: 8px !important;

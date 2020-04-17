@@ -41,7 +41,6 @@
 </script>
 <style  lang="scss" rel="stylesheet/scss" scoped>
   .navBody{
-    background-color: #ffffff;
-    padding: 16px 12px;
+    line-height: 77px;
   }
 </style>

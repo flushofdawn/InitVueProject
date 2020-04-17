@@ -1,20 +1,22 @@
 <template>
   <div class="">
-
-    <el-menu class="menuLen" :unique-opened=true  :router=true   :default-active="defaultActive"   @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-      <div class="logo">
-        长歌行
-      </div>
-      <Menulist v-bind:menuList="menuList" ></Menulist>
-    </el-menu>
-    <div class="menuBtn" @click="menuClick">
-      <i :class="shrinkIcon" ></i>
+    <div :class="logo">
+      <i></i><span>Stories</span>
     </div>
+    <el-scrollbar class="colSroll">
+      <el-menu class="menuLen" :unique-opened=true  :router=true   :default-active="defaultActive"   @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+          <Menulist :menuList="menuList" :round="0" ></Menulist>
+          <!--<div class="menuBtn" @click="menuClick">
+            <i :class="shrinkIcon" ></i>
+          </div>-->
+      </el-menu>
+    </el-scrollbar>
   </div>
 </template>
 
 <script type="text/ecmascript-6" >
   import Menulist from '@/components/index/menu/menuList';
+
   import axios from 'axios';
   export default {
       name: "Menu",
@@ -24,7 +26,6 @@
       data(){
           return {
             menuList:'',
-            isCollapse: true,
             shrinkIcon:'fa fa-angle-double-right'
           }
       },
@@ -32,21 +33,24 @@
       //获取当前路由渲染页面菜单
         defaultActive() {
           return this.$route.path;
+        },
+        isCollapse () {
+          return this.$store.state.menu.isCollapse
+        },
+        logo(){
+          return this.$store.state.menu.logoClass
+        }
+      },
+      created: function() {
+        if( localStorage.getItem("menu") ){
+          var localIsCollapse = JSON.parse( localStorage.getItem( "menu" ) ).isCollapse;
+          this.$store.commit("menuShow",localIsCollapse )
         }
       },
       mounted() {
         this.getMenuList();
       },
       methods: {
-        menuClick(){
-          if( this.isCollapse ){
-            this.isCollapse = false
-            this.shrinkIcon = "fa fa-angle-double-left"
-          }else {
-            this.isCollapse = true
-            this.shrinkIcon = "fa fa-angle-double-right"
-          }
-        },
         handleOpen(key, keyPath) {
           console.log(key, keyPath);
         },
@@ -73,26 +77,81 @@
   }
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>
+  /deep/ .el-menu--collapse>div>.el-submenu>.el-submenu__title:hover{
+    background: linear-gradient(to right, rgba(130, 122, 243, 1) 0%, rgba(180, 122, 243, 1) 100%) !important;
+  }
+  /deep/ .el-menu--collapse>div>.el-submenu>.el-submenu__title:hover i{
+    color: white;
+  }
+  /deep/ .el-menu--collapse>div>.is-opened{
+    background: linear-gradient(to right, rgba(130, 122, 243, 1) 0%, rgba(180, 122, 243, 1) 100%) !important;
+  }
+  /deep/ .el-submenu .el-submenu__icon-arrow{
+    font-weight: bold;
+  }
+  /deep/ .menuLen>div>.el-submenu>.el-submenu__title:hover{
+    background: #ecf5ff;
+  }
+  /deep/ .menuLen>div>.el-submenu>.el-submenu__title{
+    font-size: 15px;
+  }
+  /deep/ .menuLen>div>.is-opened>.el-submenu__title:hover,/deep/ .menuLen>div>.is-active>.el-submenu__title:hover{
+    background: linear-gradient(to right, rgba(130, 122, 243, 1) 0%, rgba(180, 122, 243, 1) 100%);
+  }
+  /deep/ .menuLen>div>.is-opened>.el-submenu__title,/deep/ .menuLen>div>.is-opened>.el-submenu__title i,/deep/ .menuLen>div>.is-active>.el-submenu__title,/deep/ .menuLen>div>.is-active>.el-submenu__title i{
+      color: white !important;
+  }
+  /deep/ .menuLen>div>.is-active>.el-submenu__title{
+    background: linear-gradient(to right, rgba(130, 122, 243, 1) 0%, rgba(180, 122, 243, 1) 100%);
+  }
+  /deep/ .menuLen>div>.is-opened{
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  /deep/ .menuLen>div>.is-opened>.el-submenu__title{
+    background: linear-gradient(to right, rgba(130, 122, 243, 1) 0%, rgba(180, 122, 243, 1) 100%);
+  }
+  /deep/ .menuLen>div>.is-opened>.el-menu{
+    border-radius: 0 0 12px 12px;
+    background: #efeefd !important;
+  }
   /deep/ .el-menu{
-    padding: 0 !important;
-    background-color: #f9f9f9;
+    padding: 0;
+    background-color: transparent !important;
+  }
+  .colSroll{
+    flex: 1;
   }
   .logo{
-    height: 50px;
-    padding: 1px;
-    line-height: 55px;
-    letter-spacing: 2px;
-    text-align: center;
+    height: 77px;
+    position: relative;
+    padding-left: 70px;
     font-size: 28px;
-    font-weight: bold;
-    font-family: 华文行楷;
-    border-bottom: 1px solid #e5e5e5;
+    line-height: 77px;
+    font-family: 'Muli', sans-serif;
+    i{
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      left: 15px;
+      top: 12px;
+      background: url("../../../public/images/geass.png") no-repeat -180px -5px;
+      background-size: 300px;
+    }
+  }
+  .noFont{
+    span{
+      display: none;
+    }
+  }
+  .menuLen{
+    margin: 0 15px;
   }
   .menuLen:not(.el-menu--collapse) {
-    width: 200px;
+    width: 250px;
   }
   .el-menu--collapse{
-    width: 48px;
+    width: 50px;
   }
   .menuBtn{
     line-height: 24px;
@@ -106,7 +165,6 @@
       display: inline-block;
       position: relative;
       cursor: pointer;
-      border: 1px solid #bbb;
       border-radius: 45%;
       color: #aaa;
       vertical-align: baseline;
@@ -118,7 +176,6 @@
     content: "";
     display: inline-block;
     height: 0;
-    border-top: 1px solid #e0e0e0;
     position: absolute;
     left: 8px;
     right: 8px;
@@ -126,5 +183,8 @@
   }
   .el-menu{
     border-right: none;
+  }
+  /deep/  .el-submenu__title{
+    padding-left: 0 !important;
   }
 </style>
