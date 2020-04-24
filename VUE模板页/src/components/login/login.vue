@@ -10,10 +10,10 @@
                   <img class="" src="@/public/images/logo_login.png" />
                </div>
                <el-form-item prop="account">
-                 <el-input v-model.number="ruleForm.account" placeholder="请输入账号" clearable></el-input>
+                 <el-input v-model="ruleForm.username" placeholder="请输入用户名" clearable></el-input>
                </el-form-item>
                <el-form-item prop="pass">
-                 <el-input type="password" placeholder="请输入密码" v-model="ruleForm.pass" autocomplete="off" clearable show-password></el-input>
+                 <el-input type="password" placeholder="请输入密码" v-model="ruleForm.password" autocomplete="off" clearable show-password></el-input>
                </el-form-item>
                <el-row :gutter="24">
                  <el-col :span="12">
@@ -43,7 +43,7 @@
     data() {
       var checkAccount = (rule, value, callback) => {
         if (value === '') {
-          return callback(new Error('账号不能为空'));
+          return callback(new Error('用户名不能为空'));
         }
         setTimeout(() => {
           if (this.ruleForm.checkPass !== '') {
@@ -65,18 +65,17 @@
       };
 
       return {
-        msg: 'login',
         ruleForm: {
-          pass: '',
-          account: ''
+          username: '',
+          passwprd: ''
         },
         rules: {
-          pass: [
+          username: [
+            { validator: checkAccount, trigger: 'blur' }
+          ],
+          passwprd: [
             { validator: validatePass, trigger: 'blur' }
           ],
-          account: [
-            { validator: checkAccount, trigger: 'blur' }
-          ]
         }
       };
     },
@@ -84,8 +83,20 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            sessionStorage.setItem("isLogin", true );
-            window.location.href="/";
+            /*sessionStorage.setItem("isLogin", true );
+            window.location.href="/";*/
+            this.$store.dispatch('user/login', JSON.parse(JSON.stringify(this.ruleForm))  )
+              .then(() => {
+                console.log( data )
+                return;
+                this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
+                this.loading = false
+              })
+              .catch(() => {
+                this.loading = false
+              })
+
+
           } else {
             return false;
           }

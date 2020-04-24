@@ -12,7 +12,7 @@
             <svg-icon iconClass="search" />
           </div>
           <div :class="searchInputClass">
-            <el-input v-model="searchInput" ref="searchInput" placeholder="请输入搜索内容" clearable></el-input>
+            <el-input class="inputSearh" v-model="searchInput" ref="searchInput" placeholder="请输入搜索内容" clearable></el-input>
           </div>
         </div>
         <FullScreenBtn  v-waves:{type:center}  />
@@ -188,5 +188,12 @@
   .showSearch{
     width: 240px !important;
     display: inline-block !important;
+  }
+  /deep/ .inputSearh input{
+    height: 35px;
+    line-height: 35px;
+    border-radius: 0;
+    border: 0 !important;
+    border-bottom: 1px solid !important;
   }
 </style>

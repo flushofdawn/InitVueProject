@@ -16,6 +16,11 @@ import Echarts from 'echarts'
 import axios from 'axios'
 import qs from 'qs'
 
+import { mockXHR } from './mock'
+if (process.env.NODE_ENV === 'development') {
+  mockXHR()
+}
+
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 
