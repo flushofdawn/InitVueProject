@@ -16,3 +16,6 @@ export function param2Obj(url) {
     '"}'
   )
 }
+export function request( obj ) {
+
+}

@@ -45,6 +45,7 @@ module.exports = app => {
     ignored: /mock-server/,
     ignoreInitial: true
   }).on('all', (event, path) => {
+    console.log(  11111111  )
     if (event === 'change' || event === 'add') {
       try {
         // 删除对应文件映射路由堆栈

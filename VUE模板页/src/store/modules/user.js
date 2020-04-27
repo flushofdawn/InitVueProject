@@ -1,3 +1,4 @@
+import { login } from "@/api/user.js"
 const state ={
   token:"",
   name:"",
@@ -12,11 +13,14 @@ const mutations ={
 const actions ={
   login({ commit }, userInfo) {
     const { username, password } = userInfo
+    console.log( username )
+    console.log( password )
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), password: password }).then(response => {
         const { data } = response
-        console.log( response )
-        commit('SET_TOKEN', data.token)
+        console.log( data )
+
+        /* commit('SET_TOKEN', data.token)*/
        /* setToken(data.token)*/
         resolve()
       }).catch(error => {
