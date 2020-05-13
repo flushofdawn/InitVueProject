@@ -4,8 +4,10 @@
 import Mock from "mockjs"
 import { param2Obj } from '../../src/utils/index'
 
-const mocks = [
+import user from './user'
 
+const mocks = [
+  ...user
 ]
 
 // for front mock

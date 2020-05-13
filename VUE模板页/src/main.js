@@ -16,11 +16,12 @@ import Echarts from 'echarts'
 import axios from 'axios'
 import qs from 'qs'
 
-
 import { mockXHR } from './mock'
 if (process.env.NODE_ENV === 'development') {
   mockXHR()
 }
+
+import './permission'
 
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
@@ -33,25 +34,6 @@ Vue.prototype.qs = qs           //全局注册，使用方法为:this.qs
 
 Vue.use(ElementUI);
 
-router.beforeEach((to, from, next) => {
-  if (to.meta.title) {
-    document.title = to.meta.title
-  }
-  const flag = sessionStorage.getItem('isLogin');
-  if( to.path == "/login"  ){
-    next();
-  }else{
-    if ( to.meta.isLogin ){
-      if ( flag ){
-        next();
-      }else{
-        next('/login');
-      }
-    }else{
-      next();
-    }
-  }
-});
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

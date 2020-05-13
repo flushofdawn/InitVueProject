@@ -1,27 +1,32 @@
 import { login } from "@/api/user.js"
+import { getToken,setToken } from "@/utils/tokenOpt.js"
 const state ={
-  token:"",
+  token:getToken(),
   name:"",
   avatar:"",
   roles:"",
+  menuStatus: false,
 };
 const mutations ={
   SET_TOKEN: (state, token) => {
     state.token = token
   },
+  Set_Menu_Status:(state) => {
+    if( state.menuStatus ){
+      state.menuStatus = false;
+    }else{
+      state.menuStatus = true;
+    }
+  },
 };
 const actions ={
   login({ commit }, userInfo) {
     const { username, password } = userInfo
-    console.log( username )
-    console.log( password )
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), password: password }).then(response => {
         const { data } = response
-        console.log( data )
-
-        /* commit('SET_TOKEN', data.token)*/
-       /* setToken(data.token)*/
+        commit('SET_TOKEN', data.token)
+        setToken(data.token)
         resolve()
       }).catch(error => {
         reject(error)

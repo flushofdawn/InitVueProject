@@ -9,10 +9,10 @@
                <div class="logoDiv">
                   <img class="" src="@/public/images/logo_login.png" />
                </div>
-               <el-form-item prop="account">
+               <el-form-item prop="username">
                  <el-input v-model="ruleForm.username" placeholder="请输入用户名" clearable></el-input>
                </el-form-item>
-               <el-form-item prop="pass">
+               <el-form-item prop="password">
                  <el-input type="password" placeholder="请输入密码" v-model="ruleForm.password" autocomplete="off" clearable show-password></el-input>
                </el-form-item>
                <el-row :gutter="24">
@@ -67,33 +67,36 @@
       return {
         ruleForm: {
           username: '',
-          passwprd: ''
+          password: ''
         },
         rules: {
           username: [
             { validator: checkAccount, trigger: 'blur' }
           ],
-          passwprd: [
+          password: [
             { validator: validatePass, trigger: 'blur' }
           ],
         }
       };
     },
+    watch: {
+      $route: {
+        handler: function(route) {
+           console.log( route )
+        },
+        immediate: true
+      }
+    },
     methods: {
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            /*sessionStorage.setItem("isLogin", true );
-            window.location.href="/";*/
+            /*window.location.href="/";*/
             this.$store.dispatch('user/login', JSON.parse(JSON.stringify(this.ruleForm))  )
               .then(() => {
-                console.log( data )
-                return;
-                this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
-                this.loading = false
+                this.$router.push({ path: '/' })
               })
               .catch(() => {
-                console.log( 223333 );
                 this.loading = false
               })
 
