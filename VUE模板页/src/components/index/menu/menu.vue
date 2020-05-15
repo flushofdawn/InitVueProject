@@ -4,7 +4,7 @@
       <i></i><span>Stories</span>
     </div>
     <el-scrollbar class="colSroll">
-      <el-menu class="menuLen" :unique-opened=true  :router=true   :default-active="defaultActive"   @open="handleOpen" @close="handleClose" :collapse="$store.state.menuStatus">
+      <el-menu class="menuLen" :unique-opened=true  :router=true   :default-active="defaultActive"   @open="handleOpen" @close="handleClose" :collapse="isCollapse">
           <Menulist :menuList="menuList" :round="0" ></Menulist>
           <!--<div class="menuBtn" @click="menuClick">
             <i :class="shrinkIcon" ></i>
@@ -35,11 +35,15 @@
           return this.$route.path;
         },
         isCollapse () {
-          console.log( this.$store.state.menuStatus )
-          return this.$store.menuStatus
+          return this.$store.state.user.menuStatus
         },
         logo(){
-          return "a"
+          if(  this.$store.state.user.menuStatus ){
+            return "logo"
+          }else{
+            return "logo noFont"
+          }
+
         }
       },
       created: function() {

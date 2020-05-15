@@ -18,6 +18,7 @@
 export function getToken() {
   return window.sessionStorage.getItem("token");
 }
-export function setToken() {
-  return window.sessionStorage.setToken("token",token);
+export function setToken(token) {
+  console.log( token )
+  window.sessionStorage.setToken("token",token);
 }

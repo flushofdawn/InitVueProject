@@ -94,6 +94,7 @@
             /*window.location.href="/";*/
             this.$store.dispatch('user/login', JSON.parse(JSON.stringify(this.ruleForm))  )
               .then(() => {
+                console.log( "in shs" )
                 this.$router.push({ path: '/' })
               })
               .catch(() => {

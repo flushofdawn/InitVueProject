@@ -35,9 +35,11 @@ export default [
 
   // get user info
   {
-    url: '/user/info\.*',
+    url: '/user/info',
     type: 'get',
     response: config => {
+      console.log( "getInfo - 3" )
+      console.log( config )
       const { token } = config.query
       const info = users[token]
 
