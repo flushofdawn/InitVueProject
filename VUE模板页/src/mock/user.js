@@ -9,6 +9,28 @@ const tokens = {
     token: 'editor-token'
   }
 }
+
+const users = {
+  "admin-token":{
+    id:1,
+    role:"admin",
+    avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+    name: 'cc魔女',
+  },
+  "editor-token":{
+    id:1,
+    role:"editor",
+    avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+    name: '鲁鲁修',
+  },
+  "check-token":{
+    id:1,
+    role:"check",
+    avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+    name: '朱雀',
+  },
+
+}
 export default [
   // user login
   {
@@ -38,11 +60,8 @@ export default [
     url: '/user/info',
     type: 'get',
     response: config => {
-      console.log( "getInfo - 3" )
-      console.log( config )
       const { token } = config.query
       const info = users[token]
-
       // mock error
       if (!info) {
         return {

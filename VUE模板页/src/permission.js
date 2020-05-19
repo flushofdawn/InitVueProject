@@ -3,23 +3,27 @@
 import router from './router'
 import store from './store'
 import { Message } from 'element-ui'
+
 import NProgress from 'nprogress' // progress bar
+import 'nprogress/nprogress.css' // progress bar style
+
 import { getToken } from "@/utils/tokenOpt"
+
+NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
 //白名单 不用token可以直接访问的页面
 const whiteList = ['/login']
 
 router.beforeEach(async(to, from, next) => {
   NProgress.start();
-  console.log( to.meta )
 
   const hasToken = getToken()
-  console.log( hasToken )
   if(hasToken){
     if( to.path == "/login"  ){
       next()
     }else{
-      const { roles } = await store.dispatch('user/getInfo')
+      const roleInfo = await store.dispatch('user/getInfo');
+      const accessRoutes = await store.dispatch('permission/generateRoutes', roleInfo )
     }
   }else{
     if( whiteList.indexOf( to.path ) === -1  ){

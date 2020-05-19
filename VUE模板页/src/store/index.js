@@ -64,7 +64,8 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
 }, {})
 console.log( modules );
 const store = new Vuex.Store({
-  modules
+  modules,
+  getters
   /*modules: {
     menu: menuModel,
     login:loginModel,

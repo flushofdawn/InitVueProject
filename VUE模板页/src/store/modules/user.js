@@ -1,15 +1,28 @@
 import { login,getInfo } from "@/api/user"
 import { getToken,setToken } from "@/utils/tokenOpt"
 const state ={
+  id:"",
   token:getToken(),
   name:"",
   avatar:"",
-  roles:"",
+  role:"",
   menuStatus: false,
 };
 const mutations ={
   SET_TOKEN: (state, token) => {
     state.token = token
+  },
+  SET_ID: (state, id) => {
+    state.id = id
+  },
+  SET_NAME: (state, name) => {
+    state.name = name
+  },
+  SET_AVATAR: (state, avatar) => {
+    state.avatar = avatar
+  },
+  SET_ROLE: (state, role) => {
+    state.role = role
   },
   Set_Menu_Status:(state) => {
     if( state.menuStatus ){
@@ -25,11 +38,8 @@ const actions ={
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), password: password }).then(response => {
         const { data } = response
-        console.log( "in here" )
         commit('SET_TOKEN', data.token)
-        console.log( "in here2" )
         setToken(data.token)
-        console.log( "in here3" )
         resolve()
       }).catch(error => {
         reject(error)
@@ -37,12 +47,16 @@ const actions ={
     })
   },
   getInfo({ commit }) {
-    console.log( "getInfo - 1" )
     return new Promise((resolve, reject) => {
-      console.log( "getInfo - 2" )
       getInfo(state.token).then(response => {
+        const { data } = response
 
-        resolve()
+        commit('SET_ID', data.id)
+        commit('SET_NAME', data.name)
+        commit('SET_AVATAR', data.avatar)
+        commit('SET_ROLE', data.role)
+        console.log( data )
+        resolve(data)
       }).catch(error => {
         reject(error)
       })
