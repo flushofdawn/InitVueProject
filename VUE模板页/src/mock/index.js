@@ -4,10 +4,12 @@
 import Mock from "mockjs"
 import { param2Obj } from '../../src/utils/index'
 
-import user from './user'
+import user from './data/user'
+import routes from './data/routes'
 
 const mocks = [
-  ...user
+  ...user,
+  ...routes
 ]
 
 // for front mock

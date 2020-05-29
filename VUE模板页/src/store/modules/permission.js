@@ -13,10 +13,9 @@ const mutations ={
 
 const actions ={
   generateRoutes({ commit },roleInfo) {
-    const { id , role } = roleInfo
     return new Promise((resolve, reject) => {
-      generateRoutes(state.token).then(response => {
-        resolve(data)
+      generateRoutes( roleInfo ).then(response => {
+        resolve( response.data );
       }).catch(error => {
         reject(error)
       })
