@@ -15,14 +15,13 @@
 </template>
 
 <script>
-  import Head from '@/components/index/head/head';
-  import Menu from '@/components/index/menu/menu';
-  import Mainrouterview from '@/components/index/mainrouterview';
+  import Head from '@/layout/head';
+  import Menu from '@/layout/menu';
 
   import '@/public/css/common.css'
   export default {
     components: {
-      Menu,Head,Mainrouterview
+      Menu,Head
     },
     /*data () {
         return ''

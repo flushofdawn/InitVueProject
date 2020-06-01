@@ -19,7 +19,7 @@
 
 <script type="text/ecmascript-6" >
   //import someComponent from './someComponent'
-  import waves from '@/directive/wave/index.js'
+  import waves from '@/directive/wave'
 
   export default {
       name: "Menulist",

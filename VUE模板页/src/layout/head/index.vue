@@ -44,9 +44,9 @@
 </template>
 
 <script>
-    import Nav from '@/components/index/nav/nav';
+    import Nav from '@/layout/nav';
     import FullScreenBtn from '@/components/other/button/FullScreenBtn';
-    import waves from '@/directive/wave/index';
+    import waves from '@/directive/wave';
 
     export default {
         components: {

@@ -15,7 +15,7 @@
 </template>
 
 <script type="text/ecmascript-6" >
-  import Menulist from '@/components/index/menu/menuList';
+  import Menulist from '@/layout/menu/menuList';
 
   import axios from 'axios';
   export default {
@@ -140,7 +140,7 @@
       position: absolute;
       left: 15px;
       top: 12px;
-      background: url("../../../public/images/geass.png") no-repeat -180px -5px;
+      background: url("/public/images/geass.png") no-repeat -180px -5px;
       background-size: 300px;
     }
   }
