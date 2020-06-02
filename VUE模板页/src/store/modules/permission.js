@@ -15,6 +15,7 @@ const actions ={
   generateRoutes({ commit },roleInfo) {
     return new Promise((resolve, reject) => {
       generateRoutes( roleInfo ).then(response => {
+        console.log(response.data)
         resolve( response.data );
       }).catch(error => {
         reject(error)
