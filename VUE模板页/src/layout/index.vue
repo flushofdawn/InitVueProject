@@ -20,12 +20,13 @@
 
   import '@/public/css/common.css'
   export default {
+    name: 'Layout',
     components: {
       Menu,Head
     },
-    /*data () {
-        return ''
-    },*/
+    mounted: function () {
+      console.log(  this.$store  )
+    }
   }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -55,7 +55,6 @@ const actions ={
         commit('SET_NAME', data.name)
         commit('SET_AVATAR', data.avatar)
         commit('SET_ROLE', data.role)
-        console.log( data )
         resolve(data)
       }).catch(error => {
         reject(error)

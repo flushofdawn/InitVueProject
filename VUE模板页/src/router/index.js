@@ -5,7 +5,6 @@ import Router from 'vue-router';
 Vue.use(Router);
 
 import Layout from '@/layout';
-
 export const constantRoutes = [
   {
     path: '/login',
@@ -28,7 +27,59 @@ export const constantRoutes = [
     },
   ]},
 ]
-
+export const asyncRoutes = [
+  {
+    path: '/routerManage',
+    component: Layout,
+    redirect: '/routerManage/menu3',
+    name: 'routerManage',
+    meta:{ title: '路由管理', icon: 'el-icon-s-goods' },
+    children: [
+      {
+        path: 'menu1',
+        component: () => import('@/components/index/mainrouterview'),
+        name: 'Menu1',
+        meta: { title: 'Menu1' },
+        redirect: '/routerManage/menu1/menu1_1',
+        children: [
+          {
+            path: 'menu1-1',
+            component: () => import('@/views/routerManage/menu1_1'),
+            name: 'Menu1-1',
+            meta: { title: 'Menu1-1' }
+          },
+          {
+            path: 'menu1-2',
+            component: () => import('@/views/routerManage/menu1_2'),
+            name: 'Menu1-1',
+            meta: { title: 'Menu1-2' }
+          }
+        ]
+      },
+      {
+        path: 'menu2',
+        component: () => import('@/components/index/mainrouterview'),
+        name: 'Menu2',
+        meta: { title: 'Menu2' },
+        redirect: '/menu2/menu2_1',
+        children: [
+          {
+            path: 'menu2-1',
+            component: () => import('@/views/routerManage/menu2_1'),
+            name: 'Menu2-1',
+            meta: { title: 'Menu2-1' }
+          }
+        ]
+      },
+      {
+        path: 'menu3',
+        name: 'Menu3',
+        component: () => import('@/views/routerManage/menu3'),
+        meta: { title: 'Menu3' }
+      }
+    ]
+  }
+]
 const createRouter = () => new Router({
   mode: 'history',
   scrollBehavior: () => ({ y: 0 }),
@@ -43,55 +94,6 @@ export function resetRouter() {
 }
 
 export default router;
-/*
- {
- path: 'routerManage',
- name: 'routerManage',
- component: () => import("@/components/index/mainrouterview"),
- redirect:'/routerManage/menu3',
- meta:{ title: '路由管理', icon: 'el-icon-s-goods' },
- children:[{
- path: 'menu1',
- name: 'menu1',
- component: () => import("@/components/index/mainrouterview"),
- redirect : '/routerManage/menu1/menu1_1',
- meta:{ title: '菜单1', icon: 'el-icon-location' },
- children:[
- {
- path: 'menu1_1',
- name: 'menu1_1',
- component:() => import("@/components/main/routerManage/menu1_1"),
- meta:{ title: '菜单1-1', icon: 'el-icon-location' }
- },
- {
- path: 'menu1_2',
- name: 'menu1_2',
- component: () => import("@/components/main/routerManage/menu1_2"),
- meta:{ title: '菜单1-2', icon: 'el-icon-location' }
- }
- ]},
- {
- path: 'menu2',
- name: 'menu2',
- component: () => import("@/components/index/mainrouterview"),
- redirect: '/routerManage/menu2/menu2_1',
- meta:{ title: '菜单2', icon: 'el-icon-location' },
- children:[
- {
- path: 'menu2_1',
- name: 'menu2_1',
- component: () => import("@/components/main/routerManage/menu2_1"),
- meta:{ title: '菜单2_1', icon: 'el-icon-location' },
- }
- ]},
- {
- path: 'menu3',
- name: 'menu3',
- component: () => import("@/components/main/routerManage/menu3"),
- meta:{ title: '菜单3', icon: 'el-icon-location' }
- }
- ]}
-*/
 
 
 

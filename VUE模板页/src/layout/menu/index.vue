@@ -50,7 +50,9 @@
 
       },
       mounted() {
+        console.log( "mounted" )
         this.getMenuList();
+        console.log( this.$store.getters.permission_routes )
       },
       methods: {
         handleOpen(key, keyPath) {
@@ -60,20 +62,8 @@
           console.log(key, keyPath);
         },
         getMenuList:function(){
-          var This=this;
-          axios.get("/static/data/menu.json", {}).then(function (response) {
-            This.menuList = response.data.list;
-          })
-        },
-        toSting:function(...arg){
-          let str='';
-          for( var i=0;i<arg.length;i++ ){
-            str += String( arg[i] ) + '-';
-          }
-          if( arg.length>0 ){
-            str = str.substr(0, str.length-1);
-          }
-          return str;
+           this.menuList = this.$store.permission_routes
+
         }
       }
   }

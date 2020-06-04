@@ -32,17 +32,10 @@
       },
       props:['menuList','round'],
       methods: {
-        toSting:function(...arg){
-          let str='';
-          for( var i=0;i<arg.length;i++ ){
-            str += String( arg[i] ) + '-';
-          }
-          if( arg.length>0 ){
-            str = str.substr(0, str.length-1);
-          }
-          return str;
-        }
-      }
+
+      },
+      mounted() {
+      },
   }
 </script>
 
