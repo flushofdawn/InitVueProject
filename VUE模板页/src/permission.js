@@ -26,7 +26,7 @@ router.beforeEach(async(to, from, next) => {
       const accessRoutes = await store.dispatch('permission/generateRoutes', roleInfo )
       router.addRoutes(accessRoutes);
 
-      next()
+      next({ ...to, replace: true })
     }
   }else{
     if( whiteList.indexOf( to.path ) === -1  ){

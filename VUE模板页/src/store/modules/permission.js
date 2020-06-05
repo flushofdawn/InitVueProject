@@ -40,7 +40,6 @@ const actions ={
   generateRoutes({ commit },roleInfo) {
     return new Promise((resolve, reject) => {
       let accessedRoutes;
-      console.log( roleInfo );
       accessedRoutes = filterAsyncRoutes(asyncRoutes, roleInfo)
       commit('SET_ROUTES', accessedRoutes)
       resolve( accessedRoutes );

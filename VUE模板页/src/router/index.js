@@ -9,6 +9,7 @@ export const constantRoutes = [
   {
     path: '/login',
     name: 'login',
+    hidden: true,
     component: () => import('@/components/login'),
     meta:{
       title: '登陆',
@@ -18,9 +19,12 @@ export const constantRoutes = [
     path: '/',
     component: Layout,
     redirect: '/dashboard',
+    meta:{
+      title: '主页',
+    },
     children:[
     {
-      path: 'dashboard',
+      path: '/dashboard',
       name: 'dashboard',
       component: () => import('@/views/dashboard'),
       meta:{ title: 'Dashboard', icon: 'fa fa-dashboard' },
@@ -30,41 +34,41 @@ export const constantRoutes = [
 export const asyncRoutes = [
   {
     path: '/routerManage',
+    name: 'routerManage',
     component: Layout,
     redirect: '/routerManage/menu3',
-    name: 'routerManage',
     meta:{ title: '路由管理', icon: 'el-icon-s-goods' },
     children: [
       {
-        path: 'menu1',
-        component: () => import('@/components/index/mainrouterview'),
+        path: '/routerManage/menu1',
         name: 'Menu1',
+        redirect: '/routerManage/menu1/menu1-1',
+        component: () => import('@/components/index/mainrouterview'),
         meta: { title: 'Menu1' },
-        redirect: '/routerManage/menu1/menu1_1',
         children: [
           {
-            path: 'menu1-1',
+            path: '/routerManage/menu1/menu1-1',
             component: () => import('@/views/routerManage/menu1_1'),
             name: 'Menu1-1',
             meta: { title: 'Menu1-1' }
           },
           {
-            path: 'menu1-2',
+            path: '/routerManage/menu1/menu1-2',
             component: () => import('@/views/routerManage/menu1_2'),
-            name: 'Menu1-1',
+            name: 'Menu1-2',
             meta: { title: 'Menu1-2' }
           }
         ]
       },
       {
-        path: 'menu2',
+        path: '/routerManage/menu2',
         component: () => import('@/components/index/mainrouterview'),
         name: 'Menu2',
         meta: { title: 'Menu2' },
-        redirect: '/menu2/menu2_1',
+        redirect: '/routerManage/menu2/menu2-1',
         children: [
           {
-            path: 'menu2-1',
+            path: '/routerManage/menu2/menu2-1',
             component: () => import('@/views/routerManage/menu2_1'),
             name: 'Menu2-1',
             meta: { title: 'Menu2-1' }
@@ -72,7 +76,7 @@ export const asyncRoutes = [
         ]
       },
       {
-        path: 'menu3',
+        path: '/routerManage/menu3',
         name: 'Menu3',
         component: () => import('@/views/routerManage/menu3'),
         meta: { title: 'Menu3' }

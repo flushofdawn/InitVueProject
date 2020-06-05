@@ -7,7 +7,7 @@
       <el-scrollbar class="pageScroll">
         <el-header><Head/></el-header>
         <el-main>
-          <router-view></router-view>
+          <router-view :key="key"></router-view>
         </el-main>
       </el-scrollbar>
     </el-container>
@@ -24,8 +24,13 @@
     components: {
       Menu,Head
     },
+    computed: {
+      key() {
+        return this.$route.path
+      }
+    },
     mounted: function () {
-      console.log(  this.$store  )
+
     }
   }
 </script>

@@ -2,17 +2,19 @@
   <div>
     <!--round-->
     <template v-for="( item , index ) in menuList">
-      <el-submenu :index='item.name' v-if="item.childList" :key="item.id" >
-        <div slot="title" :style="{paddingLeft:13*(round+1)+'px'}" >
-          <i :class="[item.icon]" ></i>
-          <span slot="title">{{ item.name }}</span>
-        </div>
-        <Menulist :menuList="item.childList" :round="round+1" ></Menulist>
-      </el-submenu>
-      <el-menu-item :index='item.path' v-waves:{type:center} v-else :key="item.id" :style="{paddingLeft:13*(round+1)+'px'}" >
-        <i :class="[item.icon]"></i>
-        <span slot="title">{{ item.name }}</span>
-      </el-menu-item>
+      <template v-if="!item.hidden">
+        <el-submenu :index='item.path' v-if="item.children" :key="item.id" >
+          <div slot="title" :style="{paddingLeft:13*(round+1)+'px'}" >
+            <i :class="[ item.meta.icon || '']" ></i>
+            <span slot="title">{{ item.meta.title }}</span>
+          </div>
+          <Menulist :menuList="item.children" :round="round+1" ></Menulist>
+        </el-submenu>
+        <el-menu-item :index='item.path' v-waves:{type:center} v-else :key="item.id" :style="{paddingLeft:13*(round+1)+'px'}" >
+          <i :class="[item.meta.icon || '']"></i>
+          <span slot="title">{{ item.meta.title }}</span>
+        </el-menu-item>
+      </template>
     </template>
   </div>
 </template>
@@ -35,6 +37,7 @@
 
       },
       mounted() {
+
       },
   }
 </script>

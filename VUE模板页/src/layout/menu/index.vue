@@ -50,9 +50,7 @@
 
       },
       mounted() {
-        console.log( "mounted" )
         this.getMenuList();
-        console.log( this.$store.getters.permission_routes )
       },
       methods: {
         handleOpen(key, keyPath) {
@@ -62,8 +60,7 @@
           console.log(key, keyPath);
         },
         getMenuList:function(){
-           this.menuList = this.$store.permission_routes
-
+           this.menuList = this.$store.getters.permission_routes
         }
       }
   }
