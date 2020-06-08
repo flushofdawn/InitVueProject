@@ -58,14 +58,18 @@
         name: "Head",
         computed: {
           unfoldIcon() {
-            return this.$store.state.menu.unfoldIcon
+            if( this.$store.state.user.menuStatus ){
+              return "el-icon-s-unfold"
+            }else{
+              return "el-icon-s-fold"
+            }
           }
         },
         methods: {
-          menuClick(){
-            let state = this.$store.state.menu.isCollapse;
-            localStorage.setItem( "menu" , JSON.stringify({isCollapse:!state}));
-            this.$store.commit("menuShow", !state );
+          menuClick(){/*
+            let state = this.$store.state.user.menuStatus;
+            localStorage.setItem( "menu" , JSON.stringify({isCollapse:!state})); */
+            this.$store.dispatch("user/isCollapse");
           },
           searchInputShow(){
              if( this.searchInputClass == "searchInput" ){

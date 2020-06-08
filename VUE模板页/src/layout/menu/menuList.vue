@@ -3,17 +3,27 @@
     <!--round-->
     <template v-for="( item , index ) in menuList">
       <template v-if="!item.hidden">
-        <el-submenu :index='item.path' v-if="item.children" :key="item.id" >
-          <div slot="title" :style="{paddingLeft:13*(round+1)+'px'}" >
-            <i :class="[ item.meta.icon || '']" ></i>
+        <template v-if="(item.children == undefined )">
+          <el-menu-item :index='item.path' v-waves:{type:center} :key="item.path" :style="{paddingLeft:13*(round+1)+'px'}" >
+            <i :class="[item.meta.icon || '']"></i>
             <span slot="title">{{ item.meta.title }}</span>
-          </div>
-          <Menulist :menuList="item.children" :round="round+1" ></Menulist>
-        </el-submenu>
-        <el-menu-item :index='item.path' v-waves:{type:center} v-else :key="item.id" :style="{paddingLeft:13*(round+1)+'px'}" >
-          <i :class="[item.meta.icon || '']"></i>
-          <span slot="title">{{ item.meta.title }}</span>
-        </el-menu-item>
+          </el-menu-item>
+        </template>
+        <template v-else-if="(item.children.length == 1 && round==0 && item.children.children == undefined )">
+          <el-menu-item :index='item.children[0].path' v-waves:{type:center}  :key="item.children[0].path" :style="{paddingLeft:13*(round+1)+'px'}" >
+            <i :class="[item.children[0].meta.icon || '']"></i>
+            <span slot="title">{{ item.children[0].meta.title }}</span>
+          </el-menu-item>
+        </template>
+        <template v-else>
+          <el-submenu :index='item.path' :key="item.path" >
+            <div slot="title" :style="{paddingLeft:13*(round+1)+'px'}" >
+              <i :class="[ item.meta.icon || '']" ></i>
+              <span slot="title">{{ item.meta.title }}</span>
+            </div>
+            <Menulist :menuList="item.children" :round="round+1" ></Menulist>
+          </el-submenu>
+        </template>
       </template>
     </template>
   </div>

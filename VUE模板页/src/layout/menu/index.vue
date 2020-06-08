@@ -39,9 +39,9 @@
         },
         logo(){
           if(  this.$store.state.user.menuStatus ){
-            return "logo"
-          }else{
             return "logo noFont"
+          }else{
+            return "logo"
           }
 
         }
@@ -127,7 +127,7 @@
       position: absolute;
       left: 15px;
       top: 12px;
-      background: url("/public/images/geass.png") no-repeat -180px -5px;
+      background: url("../../public/images/geass.png") no-repeat -180px -5px;
       background-size: 300px;
     }
   }

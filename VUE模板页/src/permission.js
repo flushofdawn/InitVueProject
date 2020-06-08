@@ -22,11 +22,15 @@ router.beforeEach(async(to, from, next) => {
     if( to.path == "/login"  ){
       next()
     }else{
-      const roleInfo = await store.dispatch('user/getInfo');
-      const accessRoutes = await store.dispatch('permission/generateRoutes', roleInfo )
-      router.addRoutes(accessRoutes);
-
-      next({ ...to, replace: true })
+      const hasRoles = store.getters.role && store.getters.role.length > 0
+      if (hasRoles) {
+        next()
+      } else{
+        const roleInfo = await store.dispatch('user/getInfo');
+        const accessRoutes = await store.dispatch('permission/generateRoutes', roleInfo )
+        router.addRoutes(accessRoutes);
+        next({ ...to, replace: true })
+      }
     }
   }else{
     if( whiteList.indexOf( to.path ) === -1  ){

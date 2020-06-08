@@ -61,6 +61,13 @@ const actions ={
       })
     })
   },
+  isCollapse({ commit }) {
+    return new Promise((resolve, reject) => {
+      commit('Set_Menu_Status');
+      resolve();
+    })
+  },
+
 };
 
 export default {

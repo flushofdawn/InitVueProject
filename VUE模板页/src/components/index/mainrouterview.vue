@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-view :key="key"/>
+    <router-view/>
   </div>
 </template>
 
@@ -11,9 +11,9 @@
       return { }
     },
     methods: {
-      key(){
+      /*key(){
         return this.$route.path
-      }
+      }*/
     }
   }
 </script>
