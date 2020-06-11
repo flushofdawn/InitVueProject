@@ -32,8 +32,10 @@
                 个人信息
               </el-dropdown-item>
               <el-dropdown-item>
-                <i class="fa fa-sign-out"></i>
-                登出
+                <span @click="logout">
+                  <i class="fa fa-sign-out"></i>
+                  登出
+                </span>
               </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
@@ -66,9 +68,9 @@
           }
         },
         methods: {
-          menuClick(){/*
-            let state = this.$store.state.user.menuStatus;
-            localStorage.setItem( "menu" , JSON.stringify({isCollapse:!state})); */
+          menuClick(){
+            /*let state = this.$store.state.user.menuStatus;
+            localStorage.setItem( "menu" , JSON.stringify({isCollapse:!state}));  */
             this.$store.dispatch("user/isCollapse");
           },
           searchInputShow(){
@@ -78,6 +80,10 @@
              }else{
                this.searchInputClass = "searchInput";
              }
+          },
+          async logout() {
+            await this.$store.dispatch('user/logout');
+            /*this.$router.push(`/login`)*/
           }
         },
         data () {

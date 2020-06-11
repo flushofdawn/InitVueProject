@@ -37,3 +37,7 @@ table{ border-collapse: collapse; border-spacing: 0; }
   padding: 0 !important;
   padding-left: 13px !important;
 }
+.pageScroll >.el-scrollbar__wrap >.el-scrollbar__view{
+  min-height: 100%;
+  display: flex;
+}

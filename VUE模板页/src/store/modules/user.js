@@ -1,5 +1,6 @@
-import { login,getInfo } from "@/api/user"
-import { getToken,setToken } from "@/utils/tokenOpt"
+import { login,getInfo,logout } from "@/api/user"
+import { getToken,setToken,removeToken } from "@/utils/tokenOpt"
+import { resetRouter } from "@/router"
 const state ={
   id:"",
   token:getToken(),
@@ -56,6 +57,20 @@ const actions ={
         commit('SET_AVATAR', data.avatar)
         commit('SET_ROLE', data.role)
         resolve(data)
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+  logout({ commit }) {
+    return new Promise((resolve, reject) => {
+      logout().then(response => {
+        console.log( response )
+        commit('SET_TOKEN', '')
+        commit('SET_ROLE', '')
+        removeToken()
+        resetRouter()
+        resolve()
       }).catch(error => {
         reject(error)
       })
