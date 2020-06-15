@@ -3,7 +3,9 @@
     <el-row :gutter="24">
       <el-col :span="6">
         <div class="grid-content divStyle">
+          <div class="">
 
+          </div>
         </div>
       </el-col>
       <el-col :span="6">
@@ -48,7 +50,7 @@
     },
     methods: {
       initChart(){
-        this.chart = this.echarts.init( this.$refs.myEchart );
+        this.chart = this.$echarts.init( this.$refs.myEchart );
         this.chart.setOption({
           title: {
             text: '折线图堆叠'
@@ -57,10 +59,13 @@
             trigger: 'axis'
           },
           legend: {
-            data: ['联盟广告', '视频广告', '直接访问', '搜索引擎']
+            right: 10,
+            top: 10,
+            bottom: 20,
+            data: ['用户总量', '视频广告']
           },
           grid: {
-            top: 10,
+            top: "30",
             left: '2%',
             right: '2%',
             bottom: '3%',
@@ -72,32 +77,51 @@
             data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
           },
           yAxis: {
-            type: 'value'
+            type: 'value',
+            splitLine :{
+              show:false //隐藏或显示
+            }
           },
           series: [
             {
               name: '用户总量',
               type: 'line',
-              stack: '总量',
-              data: [220, 182, 191, 234, 290, 330, 310]
+              smooth: true,  //true 为平滑曲线，false为直线
+              itemStyle: {
+                normal: {
+                  color: "blue",
+                  lineStyle: {        // 系列级个性化折线样式
+                    width: 2,
+                    type: 'solid',
+                    color: "#0180ff" //折线的颜色
+                  },
+                }
+              },
+              symbolSize:4, //折线点的大小
+              areaStyle: {normal: {
+                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1,[{
+                    offset: 0, color: '#81befd' // 0% 处的颜色
+                  },{
+                    offset: 1, color: '#fff' // 100% 处的颜色
+                  }]
+                ),//线条渐变色
+              }},
+              data: [80, 122, 131, 214, 290, 220, 480]
             },
             {
               name: '视频广告',
               type: 'line',
-              stack: '总量',
-              data: [150, 232, 201, 154, 190, 330, 410]
-            },
-            {
-              name: '直接访问',
-              type: 'line',
-              stack: '总量',
-              data: [320, 332, 301, 334, 390, 330, 320]
-            },
-            {
-              name: '搜索引擎',
-              type: 'line',
-              stack: '总量',
-              data: [820, 932, 901, 934, 1290, 1330, 1320]
+              smooth: true,
+              itemStyle: {
+                normal: {
+                  color: '#008B45',
+                  lineStyle: {        // 系列级个性化折线样式
+                    width: 2,
+                    type: 'solid',
+                  },
+                },
+              },//线条样式
+              data: [120, 232, 201, 154, 190, 330, 400]
             }
           ]
         });

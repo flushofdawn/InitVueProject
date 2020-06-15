@@ -27,7 +27,7 @@ import './permission'
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 
-Vue.prototype.echarts = Echarts;
+Vue.prototype.$echarts = Echarts;
 Vue.use(Echarts);
 
 Vue.prototype.$axios = axios    //全局注册，使用方法为:this.$axios
