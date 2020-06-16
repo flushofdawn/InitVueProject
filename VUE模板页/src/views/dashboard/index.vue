@@ -19,7 +19,7 @@
       </el-col>
     </el-row>
     <el-row :gutter="24" >
-      <el-col :span="24">
+      <el-col :span="12">
         <div class="grid-content divStyle echartMap1" ref="myEchart" id="map1">
 
         </div>
@@ -48,27 +48,32 @@
         this.initChart()
       })
     },
+    watch: {
+      /* 监听getSidebarFold变化，解决echarts容器变化，重新渲染 setTimeout时间必须设置，且不能太短 */
+      "$store.state.user.menuStatus" () {
+        setTimeout(() => {
+          this.resizeHandle()
+        }, 450)
+      }
+    },
     methods: {
       initChart(){
         this.chart = this.$echarts.init( this.$refs.myEchart );
         this.chart.setOption({
-          title: {
-            text: '折线图堆叠'
-          },
           tooltip: {
             trigger: 'axis'
           },
           legend: {
-            right: 10,
+            right: 25,
             top: 10,
             bottom: 20,
             data: ['用户总量', '视频广告']
           },
           grid: {
             top: "30",
-            left: '2%',
-            right: '2%',
-            bottom: '3%',
+            left: '10',
+            right: '25',
+            bottom: '30',
             containLabel: true
           },
           xAxis: {
@@ -114,18 +119,30 @@
               smooth: true,
               itemStyle: {
                 normal: {
-                  color: '#008B45',
+                  color: '#8ec6ad',
                   lineStyle: {        // 系列级个性化折线样式
                     width: 2,
                     type: 'solid',
                   },
                 },
               },//线条样式
+              areaStyle: {
+                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                  offset: 0,
+                  color: '#8ec6ad'
+                }, {
+                  offset: 1,
+                  color: '#ffe'
+                }])
+              },
               data: [120, 232, 201, 154, 190, 330, 400]
             }
           ]
         });
       },
+      resizeHandle () {
+        this.chart.resize()
+      }
     }
   }
 </script>
