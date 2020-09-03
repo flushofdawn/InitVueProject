@@ -3,7 +3,7 @@ import Router from "vue-router";
 
 Vue.use(Router);
 
-import Layout from "@/layout";
+import Layout from "@/components/layout";
 export const constantRoutes = [
   {
     path: "/login",
