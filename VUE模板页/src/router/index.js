@@ -31,14 +31,6 @@ export const constantRoutes = [
     ]
   },
   {
-    path: "/errorPages",
-    redirect: "/404",
-    meta: {
-      title: "错误页面",
-      icon: "error"
-    }
-  },
-  {
     path: "/404",
     name: "404",
     hidden: true,
@@ -97,6 +89,21 @@ export const asyncRoutes = [
         name: "Menu3",
         component: () => import("@/views/routerManage/menu3"),
         meta: { title: "Menu3" }
+      }
+    ]
+  },
+  {
+    path: "/form",
+    component: Layout,
+    meta: {
+      title: "表单"
+    },
+    children: [
+      {
+        path: "/index",
+        name: "form",
+        component: () => import("@/views/form"),
+        meta: { title: "表单", icon: "form" }
       }
     ]
   },
