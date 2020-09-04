@@ -26,9 +26,26 @@ export const constantRoutes = [
         path: "/dashboard",
         name: "dashboard",
         component: () => import("@/views/dashboard"),
-        meta: { title: "Dashboard", icon: "fa fa-dashboard" }
+        meta: { title: "Dashboard", icon: "dashboard" }
       }
     ]
+  },
+  {
+    path: "/errorPages",
+    redirect: "/404",
+    meta: {
+      title: "错误页面",
+      icon: "error"
+    }
+  },
+  {
+    path: "/404",
+    name: "404",
+    hidden: true,
+    component: () => import("@/components/errorPages/error404"),
+    meta: {
+      title: "404"
+    }
   }
 ];
 export const asyncRoutes = [
@@ -37,7 +54,7 @@ export const asyncRoutes = [
     name: "routerManage",
     component: Layout,
     redirect: "/routerManage/menu3",
-    meta: { title: "路由管理", icon: "el-icon-s-goods" },
+    meta: { title: "路由管理", icon: "routesMg" },
     children: [
       {
         path: "/routerManage/menu1",
@@ -82,7 +99,8 @@ export const asyncRoutes = [
         meta: { title: "Menu3" }
       }
     ]
-  }
+  },
+  { path: "*", redirect: "/404", hidden: true }
 ];
 const createRouter = () =>
   new Router({
