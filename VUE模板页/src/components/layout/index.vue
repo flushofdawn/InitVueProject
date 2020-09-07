@@ -1,19 +1,17 @@
 <template>
   <el-container>
-    <el-aside
-      class="leftAside"
-      ref="leftAside"
-    >
+    <el-aside class="leftAside" ref="leftAside">
       <Menu />
     </el-aside>
     <el-container class="rightContain">
       <el-header>
-
         <Head />
       </el-header>
       <el-scrollbar class="pageScroll">
         <el-main>
-          <router-view :key="key"></router-view>
+          <keep-alive>
+            <router-view :key="key"></router-view>
+          </keep-alive>
         </el-main>
       </el-scrollbar>
     </el-container>
@@ -21,24 +19,23 @@
 </template>
 
 <script>
-import Head from '@/components/layout/head';
-import Menu from '@/components/layout/menu';
+import Head from "@/components/layout/head";
+import Menu from "@/components/layout/menu";
 
-import '@/assets/css/common.css'
+import "@/assets/css/common.css";
 export default {
-  name: 'Layout',
+  name: "Layout",
   components: {
-    Menu, Head
+    Menu,
+    Head
   },
   computed: {
-    key () {
-      return this.$route.path
+    key() {
+      return this.$route.path;
     }
   },
-  mounted: function () {
-
-  }
-}
+  mounted: function() {}
+};
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" rel="stylesheet/scss" scoped>

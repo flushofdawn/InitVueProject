@@ -1,21 +1,14 @@
 <template>
   <div class="myHeader">
-    <div
-      class="sidebarCollapse"
-      @click="menuClick"
-    >
+    <div class="sidebarCollapse" @click="menuClick">
       <span :class="unfoldIcon"></span>
     </div>
     <div class="nav">
-      <Nav />
+      <Breadcrumb />
     </div>
     <div class="rightDiv">
       <div class="search">
-        <div
-          class="iconBtn"
-          @click="searchInputShow"
-          v-waves:{type:center}
-        >
+        <div class="iconBtn" @click="searchInputShow" v-waves:{type:center}>
           <svg-icon iconClass="search" />
         </div>
         <div :class="searchInputClass">
@@ -29,18 +22,11 @@
         </div>
       </div>
       <FullScreenBtn v-waves:{type:center} />
-      <div
-        class="userDiv"
-        v-waves:{type:center}
-      >
+      <div class="userDiv" v-waves:{type:center}>
         <el-dropdown trigger="click">
           <span class="el-dropdown-link">
             <div class="photoDiv">
-              <el-avatar
-                shape="square"
-                :size="50"
-                :src="photoUrl"
-              ></el-avatar>
+              <el-avatar shape="square" :size="50" :src="photoUrl"></el-avatar>
             </div>
             <div class="nameDiv">
               c.c. 魔女<i class="el-icon-caret-bottom el-icon--right"></i>
@@ -60,40 +46,40 @@
           </el-dropdown-menu>
         </el-dropdown>
       </div>
-
     </div>
   </div>
 </template>
 
 <script>
-import Nav from '@/components/layout/nav';
-import FullScreenBtn from '@/components/other/button/FullScreenBtn';
-import waves from '@/directive/wave';
+import Breadcrumb from "@/components/layout/breadcrumb";
+import FullScreenBtn from "@/components/other/button/FullScreenBtn";
+import waves from "@/directive/wave";
 
 export default {
   components: {
-    Nav, FullScreenBtn
+    Breadcrumb,
+    FullScreenBtn
   },
   directives: {
     waves
   },
   name: "Head",
   computed: {
-    unfoldIcon () {
+    unfoldIcon() {
       if (this.$store.state.user.menuStatus) {
-        return "el-icon-s-unfold"
+        return "el-icon-s-unfold";
       } else {
-        return "el-icon-s-fold"
+        return "el-icon-s-fold";
       }
     }
   },
   methods: {
-    menuClick () {
+    menuClick() {
       /*let state = this.$store.state.user.menuStatus;
       localStorage.setItem( "menu" , JSON.stringify({isCollapse:!state}));  */
       this.$store.dispatch("user/isCollapse");
     },
-    searchInputShow () {
+    searchInputShow() {
       if (this.searchInputClass == "searchInput") {
         this.$refs.searchInput.focus();
         this.searchInputClass = "searchInput showSearch";
@@ -101,21 +87,21 @@ export default {
         this.searchInputClass = "searchInput";
       }
     },
-    async logout () {
-      await this.$store.dispatch('user/logout');
-      this.$router.push(`/login`)
+    async logout() {
+      await this.$store.dispatch("user/logout");
+      this.$router.push(`/login`);
     }
   },
-  data () {
+  data() {
     return {
-      photoUrl: require('@/assets/images/photo/cc.png'),
-      searchInput: '',
+      photoUrl: require("@/assets/images/photo/cc.png"),
+      searchInput: "",
       searchInputClass: "searchInput"
-    }
+    };
   }
-}
+};
 </script>
-<style  lang="scss" rel="stylesheet/scss" scoped>
+<style lang="scss" rel="stylesheet/scss" scoped>
 .sidebarCollapse {
   float: left;
   height: 100%;
@@ -211,7 +197,7 @@ export default {
     }
   }
 }
-.el-popper[x-placement^='bottom'] {
+.el-popper[x-placement^="bottom"] {
   margin-top: 0;
 }
 .showSearch {
