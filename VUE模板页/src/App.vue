@@ -1,23 +1,23 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
-<script>
+<script> 
 export default {
-  name: 'App'
-}
+  name: "App",
+};
 </script>
 
 <style>
-  body{
-    padding: 0;
-    margin: 0 auto;
-  }
-  #app{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
+body {
+  padding: 0;
+  margin: 0 auto;
+}
+#app {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 </style>

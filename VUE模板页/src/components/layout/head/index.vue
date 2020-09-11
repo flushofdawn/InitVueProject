@@ -23,7 +23,7 @@
       </div>
       <FullScreenBtn v-waves:{type:center} />
       <div class="userDiv" v-waves:{type:center}>
-        <el-dropdown trigger="click">
+        <el-dropdown trigger="click" @command="selectDrop">
           <span class="el-dropdown-link">
             <div class="photoDiv">
               <el-avatar shape="square" :size="50" :src="photoUrl"></el-avatar>
@@ -37,8 +37,8 @@
               <i class="fa fa-user-circle-o"></i>
               个人信息
             </el-dropdown-item>
-            <el-dropdown-item>
-              <span @click="logout">
+            <el-dropdown-item command="out">
+              <span>
                 <i class="fa fa-sign-out"></i>
                 登出
               </span>
@@ -74,6 +74,15 @@ export default {
     }
   },
   methods: {
+    selectDrop(val) {
+      switch (val) {
+        case "out":
+          this.logout();
+          break;
+        default:
+          break;
+      }
+    },
     menuClick() {
       /*let state = this.$store.state.user.menuStatus;
       localStorage.setItem( "menu" , JSON.stringify({isCollapse:!state}));  */
@@ -105,7 +114,7 @@ export default {
 .sidebarCollapse {
   float: left;
   height: 100%;
-  line-height: 82px;
+  line-height: 74px;
   padding: 0 20px;
   cursor: pointer;
   span {
@@ -138,7 +147,7 @@ export default {
     flex-direction: row;
     > div {
       cursor: pointer;
-      line-height: 77px;
+      line-height: 68px;
       font-size: 20px;
       margin-right: 5px;
       padding: 0 8px;
@@ -190,7 +199,7 @@ export default {
             font-size: 1rem;
             height: 100%;
             white-space: nowrap;
-            line-height: 77px;
+            line-height: 68px;
           }
         }
       }

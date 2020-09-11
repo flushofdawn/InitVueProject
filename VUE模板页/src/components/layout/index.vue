@@ -1,14 +1,19 @@
 <template>
   <el-container>
-    <el-aside class="leftAside" ref="leftAside">
+    <el-aside
+      class="leftAside"
+      ref="leftAside"
+    >
       <Menu />
     </el-aside>
     <el-container class="rightContain">
-      <el-header>
-        <Head />
-      </el-header>
       <el-scrollbar class="pageScroll">
         <el-main>
+          <el-header>
+
+            <Head />
+            <Nav />
+          </el-header>
           <keep-alive>
             <router-view :key="key"></router-view>
           </keep-alive>
@@ -21,20 +26,22 @@
 <script>
 import Head from "@/components/layout/head";
 import Menu from "@/components/layout/menu";
+import Nav from "@/components/layout/nav";
 
 import "@/assets/css/common.css";
 export default {
   name: "Layout",
   components: {
     Menu,
-    Head
+    Head,
+    Nav
   },
   computed: {
-    key() {
+    key () {
       return this.$route.path;
     }
   },
-  mounted: function() {}
+  mounted: function () { }
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -44,18 +51,16 @@ export default {
   color: #777d74;
 }
 .rightContain {
-  padding-top: 77px;
   position: relative;
   .el-header {
-    height: 77px !important;
+    width: 100%;
+    height: 68px !important;
     background: white;
     padding: 0;
     box-shadow: 0px 0px 25px 0px rgba(45, 69, 95, 0.1);
     position: absolute;
-    z-index: 10;
+    z-index: 1;
     top: 0;
-    left: 0;
-    right: 0;
   }
 }
 .el-container {
@@ -77,10 +82,14 @@ export default {
     overflow-x: hidden;
     padding: 0;
     background: #efeefd;
+    padding-top: 77px;
   }
 }
 .pageScroll {
   min-height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 11;
 }
 /deep/ .el-scrollbar__wrap {
   overflow-x: hidden !important;

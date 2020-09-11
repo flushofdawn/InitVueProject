@@ -45,6 +45,6 @@ export default {
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>
 .navBody {
-  line-height: 77px;
+  line-height: 68px;
 }
 </style>

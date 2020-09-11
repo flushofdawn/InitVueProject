@@ -44,15 +44,15 @@ module.exports = {
       {
         test: /\.svg$/,
         loader: 'svg-sprite-loader',
-        include:[resolve('src/icons')],
+        include: [resolve('src/icons')],
         options: {
-          symbolId:'icon-[name]'
+          symbolId: 'icon-[name]'
         }
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        test: /\.(png|jpe?g|gif|svg|webp|apng|cur)(\?.*)?$/,
         loader: 'url-loader',
-        exclude:[resolve('src/icons')],
+        exclude: [resolve('src/icons')],
         options: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
@@ -78,7 +78,7 @@ module.exports = {
         test: /\.sass$/,
         loaders: ['style', 'css', 'sass']
       },
-      { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/},
+      { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
     ]
   },
   node: {
