@@ -28,7 +28,6 @@
 <script type="text/ecmascript-6" >
 import Menulist from '@/components/layout/menu/menuList';
 
-import axios from 'axios';
 export default {
   name: "Menu",
   components: {

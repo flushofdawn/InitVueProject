@@ -12,8 +12,8 @@ import "element-ui/lib/theme-chalk/index.css";
 /*字体图标*/
 import "font-awesome/scss/font-awesome.scss";
 import "@/icons";
-
-import Echarts from "echarts";
+/* 
+import Echarts from "echarts"; */
 import axios from "axios";
 import qs from "qs";
 
@@ -27,8 +27,8 @@ import "./permission";
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 
-Vue.prototype.$echarts = Echarts;
-Vue.use(Echarts);
+/* Vue.prototype.$echarts = Echarts;
+Vue.use(Echarts); */
 
 Vue.prototype.$axios = axios; //全局注册，使用方法为:this.$axios
 Vue.prototype.qs = qs; //全局注册，使用方法为:this.qs
