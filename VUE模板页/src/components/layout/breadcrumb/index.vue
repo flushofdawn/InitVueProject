@@ -1,11 +1,18 @@
 <template>
   <!--v-for="( item1 ,index1 ) in navList" -->
-  <el-breadcrumb class="navBody" separator-class="el-icon-arrow-right">
-    <template v-for="(item, index) in levelList">
-      <el-breadcrumb-item :to="{ path: item.path }">
+  <el-breadcrumb
+    class="navBody"
+    separator-class="el-icon-arrow-right"
+  >
+    <transition-group name="slide-fade">
+      <el-breadcrumb-item
+        v-for="(item, index) in levelList"
+        :to="{ path: item.path }"
+        :key="item.path"
+      >
         {{ item.meta.title }}
       </el-breadcrumb-item>
-    </template>
+    </transition-group>
   </el-breadcrumb>
 </template>
 
@@ -13,24 +20,23 @@
 //import someComponent from './someComponent'
 export default {
   name: "Breadcrumb",
-  data() {
+  data () {
     return {
       navList: [],
       levelList: []
     };
   },
   watch: {
-    $route() {
+    $route () {
       this.getBreadcrumb();
     }
   },
-  mounted() {
+  mounted () {
     this.getBreadcrumb();
   },
   methods: {
-    getBreadcrumb() {
+    getBreadcrumb () {
       var matched = this.$route.matched.filter(item => item.name);
-
       var first = matched[0];
       if (
         first &&
@@ -45,6 +51,38 @@ export default {
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>
 .navBody {
-  line-height: 68px;
+  line-height: 60px;
+}
+/* 可以设置不同的进入和离开动画 */
+/* 设置持续时间和动画函数 */
+.slide-fade-enter-active {
+  animation: bounce-in 0.6s;
+}
+.slide-fade-leave-active {
+  animation: bounce-out 0.3s;
+}
+@keyframes bounce-in {
+  0% {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+@keyframes bounce-out {
+  0% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(10px);
+    opacity: 0;
+  }
 }
 </style>

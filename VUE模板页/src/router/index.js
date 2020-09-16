@@ -95,6 +95,7 @@ export const asyncRoutes = [
   {
     path: "/form",
     component: Layout,
+    redirect: "/form/index",
     meta: {
       title: "表单"
     },

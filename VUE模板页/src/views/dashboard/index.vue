@@ -1,65 +1,69 @@
 <template>
   <div class="dashBody">
     <el-row :gutter="24">
-      <el-col :span="6">
-        <div class="grid-content divStyle">
-          <div class="">
-          </div>
-        </div>
-      </el-col>
-      <el-col :span="6">
-        <div class="grid-content divStyle"></div>
-      </el-col>
-      <el-col :span="6">
-        <div class="grid-content divStyle"></div>
-      </el-col>
-      <el-col :span="6">
-        <div class="grid-content divStyle"></div>
-      </el-col>
-    </el-row>
-    <el-row :gutter="24">
-      <el-col :span="6">
-        <div class="grid-content divStyle">
-          <div class="">
-          </div>
-        </div>
-      </el-col>
-      <el-col :span="6">
-        <div class="grid-content divStyle"></div>
-      </el-col>
-      <el-col :span="6">
-        <div class="grid-content divStyle"></div>
-      </el-col>
-      <el-col :span="6">
-        <div class="grid-content divStyle"></div>
-      </el-col>
-    </el-row>
-    <el-row :gutter="24">
-      <el-col :span="6">
-        <div class="grid-content divStyle">
-          <div class="">
-          </div>
-        </div>
-      </el-col>
-      <el-col :span="6">
-        <div class="grid-content divStyle"></div>
-      </el-col>
-      <el-col :span="6">
-        <div class="grid-content divStyle"></div>
-      </el-col>
-      <el-col :span="6">
-        <div class="grid-content divStyle"></div>
-      </el-col>
-    </el-row>
-    <el-row :gutter="24">
       <el-col :span="12">
-        <div
+        <div class="grid-content divStyle echartMap1">
+          <line-charts data='' />
+
+        </div>
+        <!--  <div
           class="grid-content divStyle echartMap1"
           ref="myEchart"
           id="map1"
         >
 
+        </div> -->
+      </el-col>
+    </el-row>
+    <el-row :gutter="24">
+      <el-col :span="6">
+        <div class="grid-content divStyle">
+          <div class="">
+          </div>
         </div>
+      </el-col>
+      <el-col :span="6">
+        <div class="grid-content divStyle"></div>
+      </el-col>
+      <el-col :span="6">
+        <div class="grid-content divStyle"></div>
+      </el-col>
+      <el-col :span="6">
+        <div class="grid-content divStyle"></div>
+      </el-col>
+    </el-row>
+    <el-row :gutter="24">
+      <el-col :span="6">
+        <div class="grid-content divStyle">
+          <div class="">
+          </div>
+        </div>
+      </el-col>
+      <el-col :span="6">
+        <div class="grid-content divStyle"></div>
+      </el-col>
+      <el-col :span="6">
+        <div class="grid-content divStyle"></div>
+      </el-col>
+      <el-col :span="6">
+        <div class="grid-content divStyle"></div>
+      </el-col>
+    </el-row>
+    <el-row :gutter="24">
+      <el-col :span="6">
+        <div class="grid-content divStyle">
+          <div class="">
+          </div>
+        </div>
+      </el-col>
+      <el-col :span="6">
+        <div class="grid-content divStyle"></div>
+      </el-col>
+      <el-col :span="6">
+        <div class="grid-content divStyle"></div>
+      </el-col>
+      <el-col :span="6">
+        <div class="grid-content divStyle"></div>
       </el-col>
     </el-row>
   </div>
@@ -68,6 +72,7 @@
 
 <script>
 import axios from 'axios';
+import LineCharts from '@/components/echarts/barCharts';
 
 export default {
   name: 'Dashboard',
@@ -77,7 +82,8 @@ export default {
       "money": 131571,
       "stone": 37,
       "energy": 103,
-      "echart": null
+      "echart": null,
+
     }
   },
   mounted () {

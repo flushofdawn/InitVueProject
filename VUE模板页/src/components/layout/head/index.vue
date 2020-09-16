@@ -1,6 +1,9 @@
 <template>
   <div class="myHeader">
-    <div class="sidebarCollapse" @click="menuClick">
+    <div
+      class="sidebarCollapse"
+      @click="menuClick"
+    >
       <span :class="unfoldIcon"></span>
     </div>
     <div class="nav">
@@ -8,7 +11,11 @@
     </div>
     <div class="rightDiv">
       <div class="search">
-        <div class="iconBtn" @click="searchInputShow" v-waves:{type:center}>
+        <div
+          class="iconBtn"
+          @click="searchInputShow"
+          v-waves:{type:center}
+        >
           <svg-icon iconClass="search" />
         </div>
         <div :class="searchInputClass">
@@ -22,11 +29,21 @@
         </div>
       </div>
       <FullScreenBtn v-waves:{type:center} />
-      <div class="userDiv" v-waves:{type:center}>
-        <el-dropdown trigger="click" @command="selectDrop">
+      <div
+        class="userDiv"
+        v-waves:{type:center}
+      >
+        <el-dropdown
+          trigger="click"
+          @command="selectDrop"
+        >
           <span class="el-dropdown-link">
             <div class="photoDiv">
-              <el-avatar shape="square" :size="50" :src="photoUrl"></el-avatar>
+              <el-avatar
+                shape="square"
+                :size="50"
+                :src="photoUrl"
+              ></el-avatar>
             </div>
             <div class="nameDiv">
               c.c. 魔女<i class="el-icon-caret-bottom el-icon--right"></i>
@@ -65,7 +82,7 @@ export default {
   },
   name: "Head",
   computed: {
-    unfoldIcon() {
+    unfoldIcon () {
       if (this.$store.state.user.menuStatus) {
         return "el-icon-s-unfold";
       } else {
@@ -74,7 +91,7 @@ export default {
     }
   },
   methods: {
-    selectDrop(val) {
+    selectDrop (val) {
       switch (val) {
         case "out":
           this.logout();
@@ -83,12 +100,12 @@ export default {
           break;
       }
     },
-    menuClick() {
+    menuClick () {
       /*let state = this.$store.state.user.menuStatus;
       localStorage.setItem( "menu" , JSON.stringify({isCollapse:!state}));  */
       this.$store.dispatch("user/isCollapse");
     },
-    searchInputShow() {
+    searchInputShow () {
       if (this.searchInputClass == "searchInput") {
         this.$refs.searchInput.focus();
         this.searchInputClass = "searchInput showSearch";
@@ -96,12 +113,12 @@ export default {
         this.searchInputClass = "searchInput";
       }
     },
-    async logout() {
+    async logout () {
       await this.$store.dispatch("user/logout");
       this.$router.push(`/login`);
     }
   },
-  data() {
+  data () {
     return {
       photoUrl: require("@/assets/images/photo/cc.png"),
       searchInput: "",
@@ -114,7 +131,7 @@ export default {
 .sidebarCollapse {
   float: left;
   height: 100%;
-  line-height: 74px;
+  line-height: 66px;
   padding: 0 20px;
   cursor: pointer;
   span {
@@ -132,7 +149,11 @@ export default {
 .myHeader {
   width: 100%;
   height: 100%;
+  position: relative;
+  z-index: 10;
   flex-direction: column;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
   .logoDiv {
     float: left;
     height: 100%;
@@ -147,7 +168,7 @@ export default {
     flex-direction: row;
     > div {
       cursor: pointer;
-      line-height: 68px;
+      line-height: 60px;
       font-size: 20px;
       margin-right: 5px;
       padding: 0 8px;
@@ -199,14 +220,14 @@ export default {
             font-size: 1rem;
             height: 100%;
             white-space: nowrap;
-            line-height: 68px;
+            line-height: 60px;
           }
         }
       }
     }
   }
 }
-.el-popper[x-placement^="bottom"] {
+.el-popper[x-placement^='bottom'] {
   margin-top: 0;
 }
 .showSearch {

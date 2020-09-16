@@ -54,10 +54,8 @@ export default {
   position: relative;
   .el-header {
     width: 100%;
-    height: 68px !important;
     background: white;
     padding: 0;
-    box-shadow: 0px 0px 25px 0px rgba(45, 69, 95, 0.1);
     position: absolute;
     z-index: 1;
     top: 0;
@@ -82,7 +80,7 @@ export default {
     overflow-x: hidden;
     padding: 0;
     background: #efeefd;
-    padding-top: 77px;
+    padding-top: 92px;
   }
 }
 .pageScroll {
@@ -91,7 +89,7 @@ export default {
   position: relative;
   z-index: 11;
 }
-/deep/ .el-scrollbar__wrap {
+/deep/ .pageScroll > .el-scrollbar__wrap {
   overflow-x: hidden !important;
 }
 </style>

@@ -1,39 +1,73 @@
 <template>
   <div class="nav">
-    <el-tag
-      :key="tag.name"
-      v-for="tag in dynamicTags"
-      :closable="tag.closeBtn"
-      size="small"
-      :disable-transitions="true"
-      @close="handleClose(tag)"
-      @click="changeView(tag)"
-    >
-      {{ tag.name }}
-    </el-tag>
+    <ScrollBar>
+      <el-tag
+        :key="tag.name"
+        v-for="tag in dynamicTags"
+        :closable="tag.closeBtn"
+        size="small"
+        :class="tag.isActive?'isActive':''"
+        :disable-transitions="true"
+        effect="plain"
+        @close="handleClose(tag)"
+        @click="changeView(tag,$event)"
+      >
+        {{ tag.name }}
+      </el-tag>
+    </ScrollBar>
   </div>
 </template>
 
 <script>
+import ScrollBar from '../../scrollBar'
 export default {
   name: "Nav",
-  data() {
+  components: {
+    ScrollBar
+  },
+  data () {
     return {
-      dynamicTags: [{ name: "Dashboard", path: "", closeBtn: false }]
+      dynamicTags: []
     };
   },
   watch: {
-    $route(to, from) {
-      console.log(to);
-      console.log(from);
+    $route (to, from) {
+      const tag = {
+        name: to.meta.title,
+        path: to.path,
+        isActive: true,
+        closeBtn: true
+      }
+      this.$store.commit("tagView/ADD_TAG", tag);
     }
   },
+  mounted: function () {
+    const tag = {
+      name: this.$route.meta.title,
+      path: this.$route.path,
+      isActive: true,
+      closeBtn: true
+    }
+    this.$store.commit("tagView/ADD_TAG", tag);
+    this.dynamicTags = this.$store.state.tagView.tag
+  },
   methods: {
-    handleClose(tag) {
-      this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
+    handleClose (tag) {
+      this.$store.commit("tagView/DEL_TAG", tag);
+      if (tag.isActive) {
+        this.$router.push({ path: this.$store.state.tagView.tag[this.$store.state.tagView.tag.length - 1].path });
+      }
     },
-    changeView(tag) {
-      console.log(tag);
+    changeView (tag, e) {
+      const offsetLeft = this.$el.getBoundingClientRect().left // container margin left
+      const offsetWidth = this.$el.offsetWidth // container width 
+      const left = e.clientX - offsetLeft  // 15: margin right
+
+      console.log(`${offsetLeft}-${offsetWidth}-${left}`)
+      if (!tag.isActive) {
+        this.$router.push({ path: tag.path });
+        this.$store.commit("tagView/CHANGE_TAG", tag);
+      }
     }
   }
 };
@@ -41,11 +75,26 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" rel="stylesheet/scss" scoped>
 .nav {
-  height: 34px;
+  height: 32px;
   background: white;
-  border: 1px solid black;
   .el-tag {
-    margin: 4px 10px 4px 4px;
+    margin: 4px;
   }
+  .el-tag:hover {
+    cursor: pointer;
+  }
+  .isActive {
+    background: #efeefd;
+  }
+  border-bottom: 1px solid #d8dce5;
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12),
+    0 0 3px 0 rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
+}
+/deep/ .nav_scroll > .el-scrollbar__wrap {
+  overflow-y: hidden !important;
+}
+/deep/ .nav_scroll > .el-scrollbar__wrap > .el-scrollbar__view {
+  white-space: nowrap;
 }
 </style>
