@@ -3,7 +3,8 @@
     :class="className"
     :style="{height:height,width:width}"
     :data="data"
-  />
+  >
+  </div>
 </template>
 
 <script>
@@ -33,11 +34,19 @@ export default {
   computed: {
 
   },
-  mounted: function () {
+  /* mounted: function () {
     this.initChart()
+  }, */
+  watch: {
+    data () {
+      this.initChart()
+    }
   },
   methods: {
     initChart () {
+      const dataTit = (this.data.ydata ? this.data.ydata : []).map(it => {
+        return it.title
+      })
       this.chart = Echarts.init(this.$el);
       this.chart.setOption({
         tooltip: {
@@ -59,7 +68,7 @@ export default {
         xAxis: {
           type: 'category',
           boundaryGap: false,
-          data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+          data: this.data.xdata ? this.data.xdata : []
         },
         yAxis: {
           type: 'value',

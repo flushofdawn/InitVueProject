@@ -3,16 +3,12 @@
     <el-row :gutter="24">
       <el-col :span="12">
         <div class="grid-content divStyle echartMap1">
-          <line-charts :data="echart" />
+          <line-charts
+            :data="lineCharts"
+            :style="{height:'100%',width:'100%'}"
+          />
 
         </div>
-        <!--  <div
-          class="grid-content divStyle echartMap1"
-          ref="myEchart"
-          id="map1"
-        >
-
-        </div> -->
       </el-col>
     </el-row>
     <el-row :gutter="24">
@@ -73,6 +69,7 @@
 <script>
 import axios from 'axios';
 import LineCharts from '@/components/echarts/lineCharts';
+import { getDashboardData } from '@/api/dashboard';
 
 export default {
   name: 'Dashboard',
@@ -81,27 +78,26 @@ export default {
   },
   data () {
     return {
-      "members": '',
-      "money": '',
-      "stone": '',
-      "energy": '',
-      "echart": {},
+      members: '',
+      money: '',
+      stone: '',
+      energy: '',
+      lineCharts: {},
     }
   },
   mounted () {
-
-  },
-  watch: {
-    /* 监听getSidebarFold变化，解决echarts容器变化，重新渲染 setTimeout时间必须设置，且不能太短 */
-    /* "$store.state.user.menuStatus" () {
-      setTimeout(() => {
-        this.resizeHandle()
-      }, 450)
-    } */
+    this.initPage()
   },
   methods: {
-    resizeHandle () {
-      this.chart.resize()
+    initPage () {
+      getDashboardData().then(response => {
+        const { data } = response;
+        this.members = data.members;
+        this.money = data.money;
+        this.stone = data.stone;
+        this.energy = data.energy;
+        this.lineCharts = data.lineCharts;
+      });
     }
   }
 }
