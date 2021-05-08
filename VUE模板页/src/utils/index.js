@@ -17,7 +17,7 @@ export function param2Obj(url) {
   );
 }
 
-export function _debounce(fnName, time) {
+export function debounce(fnName, time) {
   let timeout = null;
   return function() {
     if (timeout) {

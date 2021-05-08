@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { _debounce } from "@/utils";
+import { debounce } from "@/utils";
 export default {
   name: "Menu3",
   data () {
@@ -46,7 +46,7 @@ export default {
       }
       this.mouseIcon();
     },
-    mouseIcon: _debounce("changeICon", 6000),
+    mouseIcon: debounce("changeICon", 6000),
     changeICon () {
       this.mouseClass = "mouse wait";
     }

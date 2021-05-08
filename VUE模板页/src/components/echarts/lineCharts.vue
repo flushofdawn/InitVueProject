@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Echarts from "echarts";
+import * as echarts from 'echarts';
 import resize from './mixins/resize'
 export default {
   name: 'LineCharts',
@@ -47,7 +47,8 @@ export default {
       const dataTit = (this.data.ydata ? this.data.ydata : []).map(it => {
         return it.title
       })
-      this.chart = Echarts.init(this.$el);
+      console.log(this.data);
+      this.chart = echarts.init(this.$el);
       this.chart.setOption({
         tooltip: {
           trigger: 'axis'
@@ -94,7 +95,7 @@ export default {
             symbolSize: 4, //折线点的大小
             areaStyle: {
               normal: {
-                color: new Echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                   offset: 0, color: '#81befd' // 0% 处的颜色
                 }, {
                   offset: 1, color: '#fff' // 100% 处的颜色
@@ -118,7 +119,7 @@ export default {
               },
             },//线条样式
             areaStyle: {
-              color: new Echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                 offset: 0,
                 color: '#8ec6ad'
               }, {
